@@ -10,11 +10,12 @@ Use `forEach` to loop over the input array and work with each value.  Push the n
 // let arr = [1,2,3,4,5];
 const addOne = (arr) => {
   let newArr = [];
-  arr.forEach((element,index) => {
-    newArr[index]=element+1;
-    return newArr.push();
+  arr.forEach((element) => {
+    newArr.push(element + 1);
   });
-  console.log(newArr);
+  return newArr;
+
+  // console.log(newArr);
 
 };
 
@@ -28,7 +29,11 @@ Use `forEach` to loop over the input array. Modify each string, and add the upda
 ------------------------------------------------------------------------------------------------ */
 
 const addExclamation = (arr) => {
-  // Solution code here...
+  let newArr = [];
+  arr.forEach((element) => {
+    newArr.push(element + '!');
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -40,7 +45,11 @@ Use `forEach` to loop over the input array. The modified strings should each be 
 ------------------------------------------------------------------------------------------------ */
 
 const allUpperCase = (arr) => {
-  // Solution code here...
+  let newArr = [];
+  arr.forEach((element) => {
+    newArr.push(element.toUpperCase());
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -52,14 +61,22 @@ Then, write a function named `speaker` that takes in an array of strings and a c
 
 Use `forEach` to build a new array of strings, each string modified by the callback. Return the new array.
 ------------------------------------------------------------------------------------------------ */
-
+//word is an array
 const greeting = (word) => {
-  // Solution code here...
+  let newArr = [];
+  word=speaker();
+  word.forEach((element) => {
+    newArr.push(element.toUpperCase() + '!');
+  });
+  return newArr;
 };
 
 const speaker = (words, callback) => {
-  // Solution code here...
+  let newArr = [];
+  newArr.push(words,callback);
+  return newArr;
 };
+// expect(speaker(['hello', '301', 'students'], greeting)).toStrictEqual(['HELLO!', '301!', 'STUDENTS!']);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -78,11 +95,13 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-  // Solution code here...
+  arr=[];
+  arr.push(value);
 };
 
 const addNumbers = (num, arr, times, callback) => {
-  // Solution code here...
+  arr.push(num);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
