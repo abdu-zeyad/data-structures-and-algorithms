@@ -74,7 +74,8 @@ const forEachTwoToThe = (arr) => {
 
   });
 
-  return newArr;};
+  return newArr;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -83,16 +84,20 @@ Write a function named mapTwoToThe that produces the same output as your forLoop
 ------------------------------------------------------------------------------------------------ */
 
 const mapTwoToThe = (arr) => {
-  const map1 = arr.map(x => {
-    Math.pow(2, x);
+  let newArr = [];
+  arr.forEach(element => {
+    newArr.push(Math.pow(2, element));
+
   });
-  return map1;
+
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
-Write a function named charCode that, given an array of letters as an input, uses map to return a new array where each element is the result of the `charCodeAt` method on the original array element.
+Write a function named charCode that, given an array of letters as an input, uses map to return a 
+new array where each element is the result of the `charCodeAt` method on the original array element.
 
 Read the MDN documentation on String.charCodeAt() if necessary.
 
@@ -100,9 +105,10 @@ For example: charCode(['h','i']) returns [104, 105].
 ------------------------------------------------------------------------------------------------ */
 
 const charCode = (arr) => {
-  // Solution code here...
+  
 };
-
+// expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1'])).toStrictEqual([67, 111, 100, 101, 51, 48, 49]);
+//     expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1']).length).toStrictEqual(7);
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
 
