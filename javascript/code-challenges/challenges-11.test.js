@@ -56,15 +56,29 @@ const count = (target, input) => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
-Write a function that, given an array of integer arrays as input, calculates the total sum of all the elements in the array.
+Write a function that, given an array of integer arrays as input, 
+calculates the total sum of all the elements in the array.
 
-You may want to use filter, map, or reduce for this problem, but are not required to. You may need to use the same method more than once.
+You may want to use filter, map, or reduce for this problem,
+ but are not required to. You may need to use the same method more than once.
 
 For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 ------------------------------------------------------------------------------------------------ */
 
 const totalSum = (input) => {
-  // Solution code here...
+  let total = 0;
+
+  for (let i = 0; i < input.length; i++) {
+    let sub = 0;
+
+    for (let j = 0; j < input[i].length; j++) {
+      sub = sub + input[i][j];
+    }
+
+    total = total + sub;
+  }
+
+  return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -149,6 +163,17 @@ let starWarsData = [
 
 let findMaleAndFemale = (data) => {
   // Solution code here...
+  let x = data.map(fun);
+  function fun(item) {
+    if (item.gender === "male" || item.gender === "female") {
+      return item.name;
+    }
+  }
+  let y = x.filter((item) => {
+    return item !== undefined;
+  });
+  let a = y.join(" and ");
+  return a;
 };
 
 /* ------------------------------------------------------------------------------------------------
