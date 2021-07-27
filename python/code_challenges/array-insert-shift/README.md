@@ -1,13 +1,9 @@
-# Insert to Middle of an Array
-
 add a value to the middle of an array
 
-## Whiteboard Process
+# Whiteboard Process
 
-<!-- Embedded whiteboard image -->
+![aasd](a.jpg)
 
-![GitHub Logo](s.jpeg)
-
-## Approach & Efficiency
+# Approach & Efficiency
 
 built in functions helped me
