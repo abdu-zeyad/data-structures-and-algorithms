@@ -5,7 +5,10 @@ Whiteboard Process
 ![](link_list/linked_list_append.png)
 ![](link_list/linked_list_KthFromEnd.png)
 ![](link_list/linked_list_insertAfter.png)
+** lab 7 
 ![](link_list/linked_list_insertBefore.png)
+** lab 8
+![s](link_list/Untitled.jpg)
 
 
 Approach & Efficiency
