@@ -143,3 +143,19 @@ def test_happy_path():
     actual = ll.kthFromEnd(2)
     excepted = 3
     assert actual == excepted
+
+def test_zip_one():
+    ll_one = Linked_list()
+    ll_one.insert(1)
+    ll_one.insert(5)
+    ll_one.insert(7)
+    ll_one.insert(9)
+
+    ll_two = Linked_list()
+    ll_two.insert('a')
+    ll_two.insert('b')
+    ll_two.insert('c')
+    ll_two.insert('d')
+    actual =Linked_list.zipLists(ll_one, ll_two)
+    excepted = '{ 9 } -> { d } -> { 7 } -> { c } -> { 5 } -> { b } -> { 1 } -> { a } -> Null'
+    assert actual == excepted

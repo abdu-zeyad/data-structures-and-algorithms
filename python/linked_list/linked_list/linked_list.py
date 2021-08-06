@@ -102,25 +102,39 @@ class Linked_list:
             string = string + 'Null'
         return string
 
+def zipLists(list1, list2):
+
+        current1 = list1.head
+        current2 = list2.head
+        new=Linked_list()
+        while True:
+            if current1 :
+                new.append(current1.value)
+                current1=current1.next
+            if current2:
+                new.append(current2.value)
+                current2=current2.next
+
+            if not current1 and not current2:
+                break
+
+        return new
+
 if __name__ == "__main__":
 
-    # linked_list = Linked_list()
-    # linked_list.insert(3)
-    # linked_list.insert(2)
-    # linked_list.insert(1)
-    # linked_list.append(11)
-    # linked_list.insert_before(11,8)
-    # linked_list.insert_after(11,8)
-    # linked_list.insert_after(1,8)
-    # linked_list.insert_before(1,8)
-    # # linked_list.kthFromEnd(2)
-    # print(linked_list)
-    ll = Linked_list()
-    ll.insert(1)
-    ll.insert(2)
-    ll.insert(3)
-    ll.insert(4)
-    print(ll.kthFromEnd(2))
-    print(ll.kthFromEnd(-1))
-    print(ll.kthFromEnd(8))
-    print(ll.kthFromEnd(4))
+    ll_one = Linked_list()
+    ll_one.insert(1)
+    ll_one.insert(5)
+    ll_one.insert(7)
+    ll_one.insert(9)
+    print(ll_one)
+
+    ll_two = Linked_list()
+    ll_two.insert('a')
+    ll_two.insert('b')
+    ll_two.insert('c')
+    ll_two.insert('d')
+    print(ll_two)
+
+    actual =zipLists(ll_one, ll_two)
+    print(actual)
