@@ -91,3 +91,55 @@ def test_insert_after_end():
     linked_list.insert_after(66,'after end')
     linked_list.__str__()
     assert linked_list.__str__() == "{1} -> {4} -> {7} -> {74} -> {66} -> {'after end'} -> Null"
+
+######################################## code07
+
+def test_k_greater():
+    ll = Linked_list()
+    ll.insert(1)
+    ll.insert(2)
+    ll.insert(3)
+    ll.insert(4)
+    ll.insert(5)
+    actual = ll.kthFromEnd(10)
+    excepted = 'out of index'
+    assert actual == excepted
+
+def test_k_same_length():
+    ll = Linked_list()
+    ll.insert(1)
+    ll.insert(2)
+    ll.insert(3)
+    ll.insert(4)
+    ll.insert(5)
+    actual = ll.kthFromEnd(10)
+    excepted = 'out of index'
+    assert actual == excepted
+
+def test_k__not_positive_int():
+    ll = Linked_list()
+    ll.insert(1)
+    ll.insert(2)
+    ll.insert(3)
+    ll.insert(4)
+    ll.insert(5)
+    actual = ll.kthFromEnd(-1)
+    assert actual == 'Negative number not acceptable'
+
+def test_with_size_1_1():
+    ll = Linked_list()
+    ll.insert(1)
+    actual = ll.kthFromEnd(0)
+    excepted = 1
+    assert actual == excepted
+
+def test_happy_path():
+    ll = Linked_list()
+    ll.insert(1)
+    ll.insert(2)
+    ll.insert(3)
+    ll.insert(4)
+    ll.insert(5)
+    actual = ll.kthFromEnd(2)
+    excepted = 3
+    assert actual == excepted

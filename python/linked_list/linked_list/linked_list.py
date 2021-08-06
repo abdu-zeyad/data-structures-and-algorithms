@@ -71,6 +71,26 @@ class Linked_list:
                 break
             current = current.next
 
+    def kthFromEnd(self,k):
+        current = self.head
+        if current == None:
+            return ("Empty List")
+
+        if k <= -1:
+           return("Negative number not acceptable")
+        values=[]
+        while current:
+            values =values+ [current.value]
+            current = current.next
+        print(values)
+        try:
+
+            return values[::-1][k]
+        except IndexError:
+            return ("out of index")
+
+
+
     def __str__(self):
 
         string = ''
@@ -84,13 +104,23 @@ class Linked_list:
 
 if __name__ == "__main__":
 
-    linked_list = Linked_list()
-    linked_list.insert(3)
-    linked_list.insert(2)
-    linked_list.insert(1)
-    linked_list.append(11)
-    linked_list.insert_before(11,8)
-    linked_list.insert_after(11,8)
-    linked_list.insert_after(1,8)
-    linked_list.insert_before(1,8)
-    print(linked_list)
+    # linked_list = Linked_list()
+    # linked_list.insert(3)
+    # linked_list.insert(2)
+    # linked_list.insert(1)
+    # linked_list.append(11)
+    # linked_list.insert_before(11,8)
+    # linked_list.insert_after(11,8)
+    # linked_list.insert_after(1,8)
+    # linked_list.insert_before(1,8)
+    # # linked_list.kthFromEnd(2)
+    # print(linked_list)
+    ll = Linked_list()
+    ll.insert(1)
+    ll.insert(2)
+    ll.insert(3)
+    ll.insert(4)
+    print(ll.kthFromEnd(2))
+    print(ll.kthFromEnd(-1))
+    print(ll.kthFromEnd(8))
+    print(ll.kthFromEnd(4))
