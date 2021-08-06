@@ -17,3 +17,6 @@ insert function , which takes any value as an argument and add a node of a value
 includes function , which takes any value as an argument and Return T/F if value is in the linked list or not
 
 str function , which dose not takes an arguments and returns a string representing all the values in the Linked List.
+
+
+https://github.com/abdu-zeyad/data-structures-and-algorithms/pull/22
