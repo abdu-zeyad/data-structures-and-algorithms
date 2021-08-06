@@ -4,21 +4,25 @@ from linked_list import __version__
 
 from linked_list.linked_list import Linked_list
 
-def test_version(): # test 1
+
+def test_version():
     assert __version__ == '0.1.0'
 
-def test_linkedlist(): # test 2
-   assert Linked_list()
 
-def test_insert_1(): # test 3
+def test_linkedlist():
+    assert Linked_list()
+
+
+def test_insert_1():
     linked_list = Linked_list()
-    linked_list.insert(6)
-    assert linked_list.head.value == 6
+    linked_list.insert(4)
+    assert linked_list.head.value == 4
 
-def test_str():  # test 4
+
+def test_str():
     ll = Linked_list()
-    ll.insert('a')
-    ll.insert(4)
-    ll.insert(74)
+    ll.insert('zar')
+    ll.insert(-4)
+    ll.insert(12)
     ll.__str__()
-    assert ll.__str__() == "{74} -> {4} -> {'a'} -> Null"
+    assert ll.__str__() == "{12} -> {-4} -> {'zar'} -> Null"

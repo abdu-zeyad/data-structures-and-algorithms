@@ -1,54 +1,48 @@
-class Node :
-    def __init__(self,value):
-        self.value=value
-        self.next=None
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
 
 
 class Linked_list:
-    def __init__(self,head=None):
+    def __init__(self, head=None):
 
-        self.head=head
+        self.head = head
 
-
-    def insert(self,value):
-
-        # creating a new node in front of the Linked List
-        new_node=Node(value)
-
-        # node that comes next will become the head
+    def insert(self, value):
+        # take the value main and excute it in node
+        new_node = Node(value)
+        #  define the node value and the next value
         if self.head:
-            new_node.next=self.head
-
-        #Assign new_node to self.head
+            new_node.next = self.head
         self.head = new_node
 
     def includes(self, value):
-        # define the head, which is the current variable
-        # Return T/F if value is in the linked list or not
 
-        current = self.head
+        current_node = self.head
 
-        while (current) :
-            if current.value == value:
+        while (current_node):
+            if current_node.value == value:
                 return True
-            current = current.next
+            current_node = current_node.next
         return False
 
     def __str__(self):
 
         string = ''
-        current = self.head
-        while (current):
-            string = string + f"{ { current.value } } -> "
-            current = current.next
+        current_node = self.head
+        while (current_node):
+            string = string + f"{ { current_node.value } } -> "
+            current_node = current_node.next
         else:
             string = string + 'Null'
         return string
 
+
 if __name__ == "__main__":
 
     linked_list = Linked_list()
-    linked_list.insert(3)
-    linked_list.insert(2)
-    linked_list.insert(1)
+    linked_list.insert('c')
+    linked_list.insert('b')
+    linked_list.insert('a')
     print(linked_list)
