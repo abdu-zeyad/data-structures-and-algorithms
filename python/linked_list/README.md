@@ -19,4 +19,4 @@ includes function , which takes any value as an argument and Return T/F if value
 str function , which dose not takes an arguments and returns a string representing all the values in the Linked List.
 
 
-https://github.com/abdu-zeyad/data-structures-and-algorithms/pull/22
+https://github.com/abdu-zeyad/data-structures-and-algorithms/pull/23
