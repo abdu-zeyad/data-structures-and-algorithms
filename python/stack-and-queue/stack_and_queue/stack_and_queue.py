@@ -1,109 +1,81 @@
 class Node:
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, value):
+        self.value = value
         self.next = None
 
 
 class Stack:
     def __init__(self):
         self.top = None
-        self.bottom = None
-        self.length = 0
 
-    def peek(self):
-        return self.top.data
-
-    def push(self, data):
-        new_node = Node(data)
-        if self.bottom == None:
-            self.bottom = new_node
-            self.top = self.bottom
-            self.length = 1
+    def push(self, value):
+        node = Node(value)
+        if self.top:
+            node.next = self.top
+            self.top = node
         else:
-            new_node.next = self.top
-            self.top = new_node
-            self.length += 1
-            # print("top:",self.top.data,"top next:",self.top.next.data)
+            self.top = node
 
     def pop(self):
-        if not self.top:
-            return None
-        holderPointer = self.top
-        self.top = self.top.next
-        self.length -= 1
-        if self.length == 0:
-            self.bottom = None
-        return holderPointer.data
-
-    def printt(self):
-        temp = self.top
-        while temp != None:
-            print(temp.data, end=' -> ')
-            temp = temp.next
-        print()
-
-
-class Queue:
-    def __init__(self):
-        self.first = None
-        self.last = None
-        self.length = 0
+        try:
+            deleted_value = self.top.value
+            temp = self.top.next
+            self.top = temp
+            temp.next = None
+            return deleted_value
+        except:
+            return "This is empty stack"
 
     def peek(self):
-        return self.first.val
+        try:
+            return self.top.value
+        except:
+            return "This is empty stack"
 
-    def enqueue(self, val):
-        new_node = Node(val)
-        if self.first == None:
-            self.first = new_node
-            self.last = self.first
-            self.length += 1
+    def isEmpty(self):
+        if self.top == None:
+            return False
         else:
-            self.last.next = new_node
-            self.last = new_node
-            self.length += 1
+            return True
+
+
+class Queue():
+    def __init__(self):
+        self.front = None
+        self.rear = None
+
+    def enqueue(self, value):
+        node = Node(value)
+        if self.front == None:
+            self.front = node
+            self.rear = node
+        else:
+            self.rear.next = node
+            self.rear = node
 
     def dequeue(self):
-        temp = self.first.next
-        dequeued_element = self.first
-        if temp == None:
-            self.first = None
-            self.length -= 1
-            return
-        self.first.next = None
-        self.first = temp
-        self.length -= 1
+        try:
+            self.front.value
+        except:
+            return "This is Empty queue"
+        else:
+            temp = self.front
+            self.front = temp.next
+            temp.next = None
+            return temp.value
 
-    def printt(self):
-        temp = self.first
-        while temp != None:
-            print(temp.val, end='->')
-            temp = temp.next
-        print()
-        print(self.length)
+    def peek(self):
+        try:
+            return self.front.value
+        except:
+            return "This is Empty queue"
+
+    def isEmpty(self):
+        if self.front == None and self.rear == None:
+            return True
+        else:
+            return False
 
 
-myq = Queue()
-myq.enqueue('google')
-myq.enqueue('microsoft')
-myq.enqueue('facebook')
-myq.enqueue('apple')
-myq.printt()
-myq.dequeue()
-myq.printt()
-x = myq.peek()
-print(x)
-
-mystack = Stack()
-mystack.push('google')
-mystack.push('microsoft')
-mystack.push('facebook')
-mystack.push('apple')
-mystack.printt()
-x = mystack.peek()
-print(x)
-y = mystack.pop()
-print(y)
-mystack.printt()
-qw = mystack.peek()
-print(qw)
+# if __name__=="__main__" :
+#     pass
