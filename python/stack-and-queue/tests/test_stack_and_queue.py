@@ -1,5 +1,6 @@
 from stack_and_queue import __version__
 from stack_and_queue.stack_and_queue import (Stack, Queue)
+from stack_and_queue.stack_and_queue import Pseudo_queue
 
 
 def test_version():
@@ -99,7 +100,6 @@ def test_dequeue():
     assert expected == actual
 
 
-# Can successfully peek into a queue, seeing the expected value
 def test_peek_dedueue():
     queue = Queue()
     queue.enqueue(51)
@@ -109,7 +109,6 @@ def test_peek_dedueue():
     assert actual == expected
 
 
-# Can successfully empty a queue after multiple dequeues
 def test_empty_queue():
     queue = Queue()
     queue.enqueue(1)
@@ -121,15 +120,49 @@ def test_empty_queue():
     assert actual == expected
 
 
-# Can successfully instantiate an empty queue
 def test_init_empty_queue():
     queue = Queue()
     expected = None
     assert expected == queue.front
 
 
-# Calling dequeue or peek on empty queue raises exception
 def test_raise_queue():
     queue = Queue()
     expected = "This is Empty queue"
     assert expected == queue.peek()
+
+
+def test_enqueue_singl():
+    Pseudoqueue = Pseudo_queue()
+    Pseudoqueue.enqueue(21)
+    actual = Pseudoqueue.rear
+    expected = 21
+    assert expected == actual
+
+
+def test_enqueue_multiple():
+    Pseudoqueue = Pseudo_queue()
+
+    Pseudoqueue.enqueue(22)
+    Pseudoqueue.enqueue(23)
+    actual = Pseudoqueue.rear
+    expected = 23
+    assert expected == actual
+
+
+def test_dequeue_ps():
+    Pseudoqueue = Pseudo_queue()
+    Pseudoqueue.enqueue(2)
+    Pseudoqueue.enqueue(3)
+    Pseudoqueue.dequeue()
+    Pseudoqueue.dequeue()
+    actual = Pseudoqueue.dequeue()
+    expected = 3
+    assert expected == actual
+
+
+def test_dequeue_empty():
+    Pseudoqueue = Pseudo_queue()
+    actual = Pseudoqueue.dequeue()
+    expected = None
+    assert expected == actual
