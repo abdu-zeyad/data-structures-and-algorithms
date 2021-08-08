@@ -1,140 +1,130 @@
-class Node :
-    def __init__(self,value):
-        self.value=value
-        self.next=None
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
 
 
-class Linked_list:
-    def __init__(self,head=None):
+class Linkedlist:
+    def __init__(self):
+        self.head = None
 
-        self.head=head
+    def insert(self, value):
 
-
-    def insert(self,value):
-
-        # creating a new node in front of the Linked List
-        new_node=Node(value)
-
-        # node that comes next will become the head
-        if self.head:
-            new_node.next=self.head
-
-        #Assign new_node to self.head
-        self.head = new_node
+        node = Node(value)
+        if self.head == None:
+            self.head = node
+            return self.head.value
+        else:
+            current = self.head
+            self.head = node
+            self.head.next = current
+            return self.head.value
 
     def includes(self, value):
-        # define the head, which is the current variable
-        # Return T/F if value is in the linked list or not
-
-        current = self.head
-
-        while (current) :
-            if current.value == value:
-                return True
-            current = current.next
-        return False
-
-    def append(self, value):
-
-        new_node = Node(value)
-        current = self.head
-
-        if current == None:
-           current = new_node
-        else:
-            while current.next != None:
+        if self.head:
+            current = self.head
+            while current:
+                if current.value == value:
+                    return True
                 current = current.next
-        current.next = new_node
-
-
-    def insert_before(self,value,new_value):
-        node = Node(new_value)
-        current_node=self.head
-        if current_node.value==value:
-             node.next = self.head
-             self.head = node
+            return False
         else:
-            while current_node.next:
-                if current_node.next.value==value:
-                    node.next=current_node.next
-                    current_node.next=node
-                    break
-                current_node=current_node.next
-
-    def insert_after(self, value, new_value):
-        new_node = Node(new_value)
-        current = self.head
-        while current:
-            if current.value == value:
-                new_node.next = current.next
-                current.next = new_node
-                break
-            current = current.next
-
-    def kthFromEnd(self,k):
-        current = self.head
-        if current == None:
-            return ("Empty List")
-
-        if k <= -1:
-           return("Negative number not acceptable")
-        values=[]
-        while current:
-            values =values+ [current.value]
-            current = current.next
-        print(values)
-        try:
-
-            return values[::-1][k]
-        except IndexError:
-            return ("out of index")
-
-
+            raise Exception(
+                "Sorry, this list is empty , so plz insert a value")
 
     def __str__(self):
-
-        string = ''
-        current = self.head
-        while (current):
-            string = string + f"{ { current.value } } -> "
-            current = current.next
+        if self.head:
+            data_str = ''
+            current = self.head
+            while current:
+                data_str += '{'+str(current.value)+'}-> '
+                current = current.next
+            data_str += 'NULL'
+            return data_str
         else:
-            string = string + 'Null'
-        return string
+            data_str = 'NULL'
+            return data_str
 
-def zipLists(list1, list2):
+    def append(self, value):
+        new_node = Node(value)
+        if self.head == None:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = Node(value)
 
-        current1 = list1.head
-        current2 = list2.head
-        new=Linked_list()
-        while True:
-            if current1 :
-                new.append(current1.value)
-                current1=current1.next
-            if current2:
-                new.append(current2.value)
-                current2=current2.next
+    def insert_before(self, val, new_val):
+        if self.head == None:
+            self.head = Node(val)
+        if self.head.value == val:
+            self.insert(new_val)
+        else:
+            try:
+                current = self.head
+                while current.next:
+                    if current.next.value == val:
+                        saved_current_val = current.next
+                        current.next = Node(new_val)
+                        current.next.next = saved_current_val
+                        return current.next
+                    current = current.next
+            except:
+                raise Exception(f'{val} is not in linked list')
 
-            if not current1 and not current2:
+    def insertAfter(self, value, newVal):
+
+        current = self.head
+
+        while current is not None:
+            if current.value == value:
                 break
+            current = current.next
+        if current is None:
+            raise Exception(" the value not exisit ")
+        else:
+            new_node = Node(newVal)
+            new_node.next = current.next
+            current.next = new_node
 
-        return new
+    def kthFromEnd(self, k):
+        current = self.head
+        length = 1
+        while current.next:
+            length += 1
+            current = current.next
+        current = self.head
+        if k >= length:
+            return 'Error! index out of range'
+        elif k < 0:
+            return "Error! k can't be negative number"
+        else:
+            count = length-k-1
+            for i in range(length):
+                if i == count:
+                    return current.value
+                current = current.next
+
+    def kth(self, j):
+        current = self.head
+        val = []
+        while current:
+            val += [current.value]
+            current = current.next
+        val = val[::-1]
+
+        for i in range(len(val)):
+            if i == j:
+                return val[j]
+
 
 if __name__ == "__main__":
-
-    ll_one = Linked_list()
-    ll_one.insert(1)
-    ll_one.insert(5)
-    ll_one.insert(7)
-    ll_one.insert(9)
-    print(ll_one)
-
-    ll_two = Linked_list()
-    ll_two.insert('a')
-    ll_two.insert('b')
-    ll_two.insert('c')
-    ll_two.insert('d')
-    print(ll_two)
-
-    actual =zipLists(ll_one, ll_two)
-    print(actual)
+    List = Linkedlist()
+    List.insert(3)
+    List.append(7)
+    List.append(13)
+    List.append(23)
+    print(list)
+    y = Linkedlist.kthFromEnd(2, 3)
+    print(y)

@@ -1,161 +1,242 @@
 from linked_list import __version__
-import linked_list
+from linked_list.linked_list import Linkedlist
+from linked_list.zipLists import zipLists
 
-from linked_list.linked_list import Linked_list
 
-def test_version(): # test 1
+def test_version():
     assert __version__ == '0.1.0'
 
-def test_linkedlist(): # test 2
-   assert Linked_list()
 
-def test_insert_1(): # test 3
-    linked_list = Linked_list()
-    linked_list.insert(6)
-    assert linked_list.head.value == 6
+def test_instantiate():
+    List = Linkedlist()
+    actual = List.head
+    expected = None
+    assert actual == expected
 
-def test_str():  # test 4
-    ll = Linked_list()
-    ll.insert('a')
-    ll.insert(4)
-    ll.insert(74)
-    ll.__str__()
-    assert ll.__str__() == "{74} -> {4} -> {'a'} -> Null"
 
-########### for code challange 06: #############
-########### linked-list-insertions #############
+def test_insert():
+    List = Linkedlist()
+    List.insert(6)
+    actual = List.head.value
+    expected = 6
+    assert actual == expected
+
+
+def test_head():
+    List = Linkedlist()
+    List.insert(10)
+    assert List.head.value == 10
+
+
+def test_find_value():
+    List = Linkedlist()
+    List.insert(1)
+    List.append(5)
+    List.append(10)
+    assert List.includes(10) == True
+
+
+def test_find_notExist_value():
+    List = Linkedlist()
+    List.insert(1)
+    List.append(5)
+    List.append(10)
+    assert List.includes(4) == False
+
+
+def test_str():
+    List = Linkedlist()
+    List.insert(1)
+    List.append(2)
+    List.append(3)
+    assert List.__str__() == '{1}-> {2}-> {3}-> NULL'
+
+
+def lists():
+    List = Linkedlist()
+    List.insert(1)
+    List.append(2)
+    List.append(3)
+    List.append(4)
+    List.append(5)
+    List.append(6)
+    List.append(7)
+    List.append(8)
+    List.append(9)
+    List.append(10)
+    return List
+
+
+def test_inseartBefor():
+    List = lists()
+    List.insert_before(1, 13)
+    List.insert_before(2, 22)
+    List.insert_before(3, 42)
+    List.insert_before(6, 18)
+    actual = List.__str__()
+    expected = '{13}-> {1}-> {22}-> {2}-> {42}-> {3}-> {4}-> {5}-> {18}-> {6}-> {7}-> {8}-> {9}-> {10}-> NULL'
+    assert actual == expected
+
+
+def test_insert_node_before_the_first_node():
+    lnk_lst = Linkedlist()
+    lnk_lst.insert(13)
+    lnk_lst.append(23)
+    lnk_lst.insert_before(13, 3)
+    excepted = '{3}-> {13}-> {23}-> NULL'
+    actual = lnk_lst.__str__()
+    assert excepted == actual
+
+
+def test_inseartAfter():
+    List = lists()
+    List.insertAfter(2, 22)
+    List.insertAfter(3, 42)
+    List.insertAfter(6, 72)
+    actual = List.__str__()
+    expected = '{1}-> {2}-> {22}-> {3}-> {42}-> {4}-> {5}-> {6}-> {72}-> {7}-> {8}-> {9}-> {10}-> NULL'
+    assert actual == expected
+
+
+def test_insert_node_after_the_last_node():
+    List = lists()
+    List.insertAfter(1, 13)
+    List.insertAfter(2, 22)
+    List.insertAfter(3, 42)
+    List.insertAfter(6, 72)
+    List.insertAfter(10, 93)
+    actual = List.__str__()
+    expected = '{1}-> {13}-> {2}-> {22}-> {3}-> {42}-> {4}-> {5}-> {6}-> {72}-> {7}-> {8}-> {9}-> {10}-> {93}-> NULL'
+    assert actual == expected
+
 
 def test_append():
-    linked_list = Linked_list()
-    linked_list.insert(7)
-    linked_list.insert(4)
-    linked_list.append(74)
-    linked_list.__str__()
-    # actual = str(ll)
-    # expected = '{10} -> {6} -> {3} -> {74} -> NULL'
-    # assert actual == expected
-    assert linked_list.__str__() == "{4} -> {7} -> {74} -> Null"
-
-def test_multiple_append():
-    linked_list = Linked_list()
-    linked_list.insert(7)
-    linked_list.insert(4)
-    linked_list.append(74)
-    linked_list.append(66)
-    linked_list.__str__()
-    assert linked_list.__str__() == "{4} -> {7} -> {74} -> {66} -> Null"
+    actual = ''
+    List = Linkedlist()
+    List.insert(18)
+    List.append(6)
+    List.append(3)
+    List.append(15)
+    List.append(16)
+    while List.head:
+        actual += f'{List.head.value},'
+        List.head = List.head.next
+    expected = '18,6,3,15,16,'
+    assert actual == expected
 
 
-def test_insert_before_middle():
-    linked_list = Linked_list()
-    linked_list.insert(7)
-    linked_list.insert(4)
-    linked_list.insert(1)
-    linked_list.append(74)
-    linked_list.append(66)
-    linked_list.insert_before(7,'before middle')
-    linked_list.__str__()
-    assert linked_list.__str__() == "{1} -> {4} -> {'before middle'} -> {7} -> {74} -> {66} -> Null"
-
-def test_insert_before_first():
-    linked_list = Linked_list()
-    linked_list.insert(7)
-    linked_list.insert(4)
-    linked_list.insert(1)
-    linked_list.append(74)
-    linked_list.append(66)
-    linked_list.insert_before(1,100)
-    linked_list.__str__()
-    assert linked_list.__str__() == "{100} -> {1} -> {4} -> {7} -> {74} -> {66} -> Null"
+def test_k_greater_than_L_list_length():
+    lnk_lst = Linkedlist()
+    lnk_lst.append(8)
+    lnk_lst.append(3)
+    lnk_lst.insertAfter(8, 'a')
+    excepted = 'Error! index out of range'
+    actual = lnk_lst.kthFromEnd(4)
+    assert excepted == actual
 
 
-def test_insert_after_middle():
-    linked_list = Linked_list()
-    linked_list.insert(7)
-    linked_list.insert(4)
-    linked_list.insert(1)
-    linked_list.append(74)
-    linked_list.append(66)
-    linked_list.insert_after(7,'after middle')
-    linked_list.__str__()
-    assert linked_list.__str__() == "{1} -> {4} -> {7} -> {'after middle'} -> {74} -> {66} -> Null"
+def test_k_and_length_of_list_the_same():
+    lnk_lst = Linkedlist()
+    lnk_lst.append(8)
+    lnk_lst.append(3)
+    lnk_lst.insertAfter(8, 'a')
+    excepted = 'Error! index out of range'
+    actual = lnk_lst.kthFromEnd(3)
+    assert excepted == actual
 
 
-def test_insert_after_end():
-    linked_list = Linked_list()
-    linked_list.insert(7)
-    linked_list.insert(4)
-    linked_list.insert(1)
-    linked_list.append(74)
-    linked_list.append(66)
-    linked_list.insert_after(66,'after end')
-    linked_list.__str__()
-    assert linked_list.__str__() == "{1} -> {4} -> {7} -> {74} -> {66} -> {'after end'} -> Null"
+def test_k_not_positive_integer():
+    lnk_lst = Linkedlist()
+    lnk_lst.append(8)
+    lnk_lst.append(3)
+    lnk_lst.insertAfter(8, 'a')
+    excepted = "Error! k can't be negative number"
+    actual = lnk_lst.kthFromEnd(-3)
+    assert excepted == actual
 
-######################################## code07
 
-def test_k_greater():
-    ll = Linked_list()
-    ll.insert(1)
-    ll.insert(2)
-    ll.insert(3)
-    ll.insert(4)
-    ll.insert(5)
-    actual = ll.kthFromEnd(10)
-    excepted = 'out of index'
-    assert actual == excepted
+def test_linked_list_of_size_1():
+    lnk_lst = Linkedlist()
+    lnk_lst.append(8)
+    excepted = 8
+    actual = lnk_lst.kthFromEnd(0)
+    assert excepted == actual
 
-def test_k_same_length():
-    ll = Linked_list()
-    ll.insert(1)
-    ll.insert(2)
-    ll.insert(3)
-    ll.insert(4)
-    ll.insert(5)
-    actual = ll.kthFromEnd(10)
-    excepted = 'out of index'
-    assert actual == excepted
-
-def test_k__not_positive_int():
-    ll = Linked_list()
-    ll.insert(1)
-    ll.insert(2)
-    ll.insert(3)
-    ll.insert(4)
-    ll.insert(5)
-    actual = ll.kthFromEnd(-1)
-    assert actual == 'Negative number not acceptable'
-
-def test_with_size_1_1():
-    ll = Linked_list()
-    ll.insert(1)
-    actual = ll.kthFromEnd(0)
-    excepted = 1
-    assert actual == excepted
 
 def test_happy_path():
-    ll = Linked_list()
-    ll.insert(1)
-    ll.insert(2)
-    ll.insert(3)
-    ll.insert(4)
-    ll.insert(5)
-    actual = ll.kthFromEnd(2)
-    excepted = 3
-    assert actual == excepted
+    lnk_lst = Linkedlist()
+    lnk_lst.append(8)
+    lnk_lst.append(3)
+    lnk_lst.insertAfter(8, 'a')
+    excepted = 'a'
+    actual = lnk_lst.kthFromEnd(1)
+    assert excepted == actual
 
-def test_zip_one():
-    ll_one = Linked_list()
-    ll_one.insert(1)
-    ll_one.insert(5)
-    ll_one.insert(7)
-    ll_one.insert(9)
 
-    ll_two = Linked_list()
-    ll_two.insert('a')
-    ll_two.insert('b')
-    ll_two.insert('c')
-    ll_two.insert('d')
-    actual =Linked_list.zipLists(ll_one, ll_two)
-    excepted = '{ 9 } -> { d } -> { 7 } -> { c } -> { 5 } -> { b } -> { 1 } -> { a } -> Null'
-    assert actual == excepted
+def test_ll_zip_l1_less_than_l2():
+    lnk_lst1 = Linkedlist()
+    lnk_lst1.append(8)
+    lnk_lst1.append(3)
+
+    lnk_lst2 = Linkedlist()
+    lnk_lst2.append(4)
+    lnk_lst2.append(7)
+    lnk_lst2.append(5)
+    lnk_lst2.append(6)
+
+    actual = zipLists(lnk_lst1, lnk_lst2)
+    expected = 'head -> {8} -> {4} -> {3} -> {7} -> {5} -> {6} -> NULL'
+    assert expected == actual
+
+
+def test_ll_zip_l1_greater_than_l2():
+    lnk_lst1 = Linkedlist()
+    lnk_lst1.append(8)
+    lnk_lst1.append(3)
+    lnk_lst1.append(5)
+    lnk_lst1.append(6)
+
+    lnk_lst2 = Linkedlist()
+    lnk_lst2.append(4)
+    lnk_lst2.append(7)
+
+    actual = zipLists(lnk_lst1, lnk_lst2)
+    expected = 'head -> {8} -> {4} -> {3} -> {7} -> {5} -> {6} -> NULL'
+    assert expected == actual
+
+
+def test_ll_zip_l1_equal_l2():
+    lnk_lst1 = Linkedlist()
+    lnk_lst1.append(8)
+    lnk_lst1.append(3)
+
+    lnk_lst2 = Linkedlist()
+    lnk_lst2.append(4)
+    lnk_lst2.append(7)
+
+    actual = zipLists(lnk_lst1, lnk_lst2)
+    expected = 'head -> {8} -> {4} -> {3} -> {7} -> NULL'
+    assert expected == actual
+
+
+def test_ll_zip_l1_empty():
+    lnk_lst1 = Linkedlist()
+
+    lnk_lst2 = Linkedlist()
+    lnk_lst2.append(4)
+    lnk_lst2.append(7)
+    actual = zipLists(lnk_lst1, lnk_lst2)
+    expected = 'head -> {4} -> {7} -> NULL'
+    assert expected == actual
+
+
+def test_ll_zip_l2_empty():
+    lnk_lst1 = Linkedlist()
+    lnk_lst1.append(8)
+    lnk_lst1.append(3)
+
+    lnk_lst2 = Linkedlist()
+
+    actual = zipLists(lnk_lst1, lnk_lst2)
+    expected = 'head -> {8} -> {3} -> NULL'
+    assert expected == actual
