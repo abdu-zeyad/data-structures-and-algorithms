@@ -1,6 +1,7 @@
 Singly Linked List
 linked list is a group of nodes hat points to each others
 
+![sa](Untitled.jpg)
 Challenge
 a Node class that has properties for the value stored in the Node, and a pointer to the next Node. Within the LinkedList class, a head property included. Upon instantiation, an empty Linked List should be created. Define a method called insert which takes any value as an argument and adds a new node with that value to the head of the list with an O(1) Time performance.
 
