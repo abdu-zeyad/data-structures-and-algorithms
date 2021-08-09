@@ -1,128 +1,98 @@
 class Node:
     def __init__(self, value):
+
         self.value = value
         self.next = None
 
 
 class Stack:
+
     def __init__(self):
         self.top = None
+        self.size = 0
 
-    def push(self, value):
-        node = Node(value)
-        if self.top:
-            node.next = self.top
+    def push(self, data):
+        node = Node(data)
+        if self.top == None:
             self.top = node
         else:
+            node.next = self.top
             self.top = node
+        self.size += 1
 
     def pop(self):
         try:
-            deleted_value = self.top.value
-            temp = self.top.next
-            self.top = temp
-            temp.next = None
-            return deleted_value
+            popped = self.top
+            self.top = self.top.next
+            self.size -= 1
+            return popped.value
         except:
-            return "This is empty stack"
+            return "The Stack is empty"
 
     def peek(self):
         try:
             return self.top.value
         except:
-            return "This is empty stack"
+            return "The Stack is empty"
 
     def isEmpty(self):
         if self.top == None:
-            return False
-        else:
             return True
+        else:
+            return False
 
 
-class Queue():
+class Queue:
+
     def __init__(self):
         self.front = None
-        self.rear = None
+        self.size = 0
 
-    def enqueue(self, value):
-        node = Node(value)
+    def enqueue(self, data):
+        node = Node(data)
         if self.front == None:
             self.front = node
-            self.rear = node
         else:
-            self.rear.next = node
-            self.rear = node
+            current = self.front
+            while current.next != None:
+                current = current.next
+            current.next = node
+            current = current.next
+        self.size += 1
+
+# x= (1,None)
+# newnode = (2.none)
+# x.next = newnode
+# x = x.next
 
     def dequeue(self):
         try:
-            self.front.value
+            removed = self.front
+            self.front = self.front.next
+            self.size -= 1
+            return removed.value
         except:
-            return "This is Empty queue"
-        else:
-            temp = self.front
-            self.front = temp.next
-            temp.next = None
-            return temp.value
+            return "The Queue is empty"
 
     def peek(self):
         try:
             return self.front.value
         except:
-            return "This is Empty queue"
+            return "The Queue is empty"
 
     def isEmpty(self):
-        if self.front == None and self.rear == None:
+        if self.front == None:
             return True
         else:
             return False
 
-
-class Pseudo_queue():
-    def __init__(self):
-        self.first_stack = Stack()
-        self.secand_stack = Stack()
-        self.rear = None
-        self.front = None
-
-    def enqueue(self, value):
-        self.first_stack.push(value)
-        self.rear = self.first_stack.top.value
-
-    def dequeue(self):
-        if self.first_stack.top:
-            stack1 = self.first_stack
-            while not stack1.isEmpty():
-                self.secand_stack.push(stack1.pop())
-
-            poped = self.secand_stack.pop()
-            self.front = self.secand_stack.top
-            self.first_stack = Stack()
-            stack2 = self.secand_stack
-            while not stack2.isEmpty():
-                self.first_stack.push(stack2.pop())
-            return poped
-
-    def __str__(self):
-        content = ''
-        current = self.first_stack.top
-        while current:
-            content += f"{{{str(current.value)}}} -> "
-            current = current.next
-        content += " Null"
-        return content
+    def printS(self):
+        print(self.front.next.value)
 
 
 if __name__ == "__main__":
-    queue = Pseudo_queue()
+    queue = Queue()
     queue.enqueue(5)
-    print(queue.__str__())
-    queue.enqueue(7)
-    print(queue.__str__())
-    queue.enqueue(9)
-    print(queue.__str__())
-    queue.dequeue()
-    print(queue.__str__())
-    queue.dequeue()
-    print(queue.__str__())
-    queue.dequeue()
-    print(queue.__str__())
+    queue.enqueue(6)
+
+    queue.printS()
