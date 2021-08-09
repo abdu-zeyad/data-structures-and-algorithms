@@ -1,6 +1,6 @@
 from stack_and_queue import __version__
 from stack_and_queue.stack_and_queue import (Stack, Queue)
-from stack_and_queue.stack_and_queue import Pseudo_queue
+from stack_and_queue.stack_and_queue import PseudoQueue
 
 
 def test_version():
@@ -66,7 +66,7 @@ def test_init_empty():
 # Calling pop or peek on empty stack raises exception
 def test_raise_stack():
     stack = Stack()
-    expected = "This is empty stack"
+    expected = "The Stack is empty"
     assert expected == stack.peek()
 
 
@@ -128,41 +128,5 @@ def test_init_empty_queue():
 
 def test_raise_queue():
     queue = Queue()
-    expected = "This is Empty queue"
+    expected = "The Queue is empty"
     assert expected == queue.peek()
-
-
-def test_enqueue_singl():
-    Pseudoqueue = Pseudo_queue()
-    Pseudoqueue.enqueue(21)
-    actual = Pseudoqueue.rear
-    expected = 21
-    assert expected == actual
-
-
-def test_enqueue_multiple():
-    Pseudoqueue = Pseudo_queue()
-
-    Pseudoqueue.enqueue(22)
-    Pseudoqueue.enqueue(23)
-    actual = Pseudoqueue.rear
-    expected = 23
-    assert expected == actual
-
-
-def test_dequeue_ps():
-    Pseudoqueue = Pseudo_queue()
-    Pseudoqueue.enqueue(2)
-    Pseudoqueue.enqueue(3)
-    Pseudoqueue.dequeue()
-    Pseudoqueue.dequeue()
-    actual = Pseudoqueue.dequeue()
-    expected = 3
-    assert expected == actual
-
-
-def test_dequeue_empty():
-    Pseudoqueue = Pseudo_queue()
-    actual = Pseudoqueue.dequeue()
-    expected = None
-    assert expected == actual
