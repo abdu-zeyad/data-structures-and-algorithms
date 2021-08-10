@@ -91,14 +91,14 @@ class Pseudo_queue():
     def dequeue(self):
         if self.first_stack.top:
             stack1 = self.first_stack
-            while not stack1.isEmpty():
+            if not stack1.isEmpty():
                 self.secand_stack.push(stack1.pop())
 
             poped = self.secand_stack.pop()
             self.front = self.secand_stack.top
             self.first_stack = Stack()
             stack2 = self.secand_stack
-            while not stack2.isEmpty():
+            if not stack2.isEmpty():
                 self.first_stack.push(stack2.pop())
             return poped
 
