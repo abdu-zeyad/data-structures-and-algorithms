@@ -41,3 +41,4 @@ if __name__ == "__main__":
     Animal_Shelter.enqueue('cat')
     Animal_Shelter.enqueue('dog')
     print(Animal_Shelter)
+    print(Animal_Shelter)
