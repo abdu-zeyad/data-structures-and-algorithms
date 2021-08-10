@@ -1,4 +1,5 @@
-from stack_and_queue import Queue
+# from stack_and_queue import Queue
+from stack_and_queue.stack_and_queue import Queue
 
 
 class AnimalShelter:
@@ -34,18 +35,10 @@ class AnimalShelter:
             return 'NULL'
         return popped
 
-    # def __str__(self):
-    #     content = ''
-    #     current = self.shelter
-    #     while current:
-    #         content += f"{{{str(current.cat)}}} -> "
-    #         current = current.next
-    #     content += " Null"
-    #     return content
-
 
 if __name__ == "__main__":
     Animal_Shelter = AnimalShelter()
     Animal_Shelter.enqueue('cat')
     Animal_Shelter.enqueue('dog')
+    print(Animal_Shelter)
     print(Animal_Shelter)

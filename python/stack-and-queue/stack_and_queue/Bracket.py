@@ -1,5 +1,6 @@
 import re
-from stack_and_queue import Stack, Queue
+# from stack_and_queue import Stack, Queue
+from stack_and_queue.stack_and_queue import (Stack, Queue, Pseudo_queue)
 
 
 def validate_brackets(in_str):

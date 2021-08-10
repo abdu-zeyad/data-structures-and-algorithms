@@ -1,6 +1,7 @@
 from stack_and_queue import __version__
-from stack_and_queue.stack_and_queue import (Stack, Queue)
-from stack_and_queue.stack_and_queue import PseudoQueue
+from stack_and_queue.stack_and_queue import (Stack, Queue, Pseudo_queue)
+from stack_and_queue.Animal_shelter import (AnimalShelter)
+from stack_and_queue.Bracket import validate_brackets
 
 
 def test_version():
@@ -66,7 +67,7 @@ def test_init_empty():
 # Calling pop or peek on empty stack raises exception
 def test_raise_stack():
     stack = Stack()
-    expected = "The Stack is empty"
+    expected = "This is empty stack"
     assert expected == stack.peek()
 
 
@@ -100,6 +101,7 @@ def test_dequeue():
     assert expected == actual
 
 
+# Can successfully peek into a queue, seeing the expected value
 def test_peek_dedueue():
     queue = Queue()
     queue.enqueue(51)
@@ -109,6 +111,7 @@ def test_peek_dedueue():
     assert actual == expected
 
 
+# Can successfully empty a queue after multiple dequeues
 def test_empty_queue():
     queue = Queue()
     queue.enqueue(1)
@@ -120,13 +123,48 @@ def test_empty_queue():
     assert actual == expected
 
 
+# Can successfully instantiate an empty queue
 def test_init_empty_queue():
     queue = Queue()
     expected = None
     assert expected == queue.front
 
 
+# Calling dequeue or peek on empty queue raises exception
 def test_raise_queue():
     queue = Queue()
-    expected = "The Queue is empty"
+    expected = "This is Empty queue"
     assert expected == queue.peek()
+
+
+def test_raise_queue():
+    pseudo = Pseudo_queue()
+    pseudo.enqueue('3')
+    pseudo.enqueue('4')
+    expected = "4"
+    actual = pseudo.rear
+    assert expected == actual
+
+
+def test_raise_queuea():
+    pseudo = Pseudo_queue()
+    pseudo.enqueue('3')
+    pseudo.enqueue('4')
+    pseudo.dequeue()
+    expected = '4'
+    actual = pseudo.rear
+    assert expected == actual
+
+
+def test_animal():
+    shelter = AnimalShelter()
+    shelter.enqueue('cat')
+    expected = 'cat'
+    actual = shelter.cat.front.value
+    assert expected == actual
+
+
+def test_bracket():
+    expected = True
+    actual = validate_brackets('(){}')
+    assert expected == actual
