@@ -3,42 +3,83 @@ from stack_and_queue.stack_and_queue import Queue
 
 
 class AnimalShelter:
-
     def __init__(self):
-        self.cat = Queue()
-        self.dog = Queue()
-        self.shelter = Queue()
+        self.catrear = None
+        self.catinfront = None
+        self.dogrear = None
+        self.frontdog = None
 
-    def enqueue(self, animal):
-        if animal == "cat":
-            self.cat.enqueue('cat')
-            self.shelter.enqueue('cat')
-            # print(self.cat.enqueue('cat'))
+    def enqueue(self, Animal):
 
-        elif animal == "dog":
-            self.dog.enqueue('dog')
-            self.shelter.enqueue('dog')
+        if Animal.type == "cat":
 
+            if self.catinfront == None:
+                self.catinfront = Animal
+                self.catrear = Animal
+            else:
+                self.catrear.next = Animal
+                self.catrear = Animal
+
+        if Animal.type == "dog":
+
+            if self.frontdog == None:
+                self.frontdog = Animal
+                self.dogrear = Animal
+            else:
+                self.dogrear.next = Animal
+                self.dogrear = Animal
+
+    def dequeue(self, pref):
+
+        if pref == "cat" and self.catinfront != None:
+            temp = self.catinfront
+            self.catinfront = temp.next
+            temp.next = None
+            return temp.name
+
+        elif pref == "dog" and self.frontdog != None:
+            temp = self.frontdog
+            self.frontdog = temp.next
+            temp.next = None
+            return temp.name
         else:
-            return "Sorry! We do not accept animals that are not cat or dog"
+            return 'null'
 
-    def dequeue(self, pref="shelter"):
-        popped = ""
+    def __str__(self, pref):
+        content = "Null"
         if pref == "cat":
-            popped = self.cat.dequeue()
-            self.shelter.dequeue()
-
+            current = self.catrear
         elif pref == "dog":
-            popped = self.dog.dequeue()
-            self.shelter.dequeue()
+            current = self.dogrear
         else:
-            return 'NULL'
-        return popped
+            return content
+
+        while current:
+            content += f"-> {{{str(current.name)}}}"
+            current = current.next
+        return content
+
+
+class Cat():
+    def __init__(self, name):
+        self.name = name
+        self.type = 'cat'
+        self.next = None
+
+
+class Dog():
+    def __init__(self, name):
+        self.name = name
+        self.type = 'dog'
+        self.next = None
 
 
 if __name__ == "__main__":
-    Animal_Shelter = AnimalShelter()
-    Animal_Shelter.enqueue('cat')
-    Animal_Shelter.enqueue('dog')
-    print(Animal_Shelter)
-    print(Animal_Shelter)
+    gigner = Cat('gigner')
+    bob = Dog('bob')
+    Animal_shelter = AnimalShelter()
+    Animal_shelter.enqueue(bob)
+    Animal_shelter.enqueue(gigner)
+
+    print(Animal_shelter.__str__("dog"))
+    print(Animal_shelter.__str__("cat"))
