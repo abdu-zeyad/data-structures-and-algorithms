@@ -1,5 +1,5 @@
 from stack_and_queue import __version__
-from stack_and_queue.stack_and_queue import (Stack, Queue)
+from stack_and_queue.stack_and_queue import (Stack, Queue, Pseudo_queue)
 
 
 def test_version():
@@ -133,3 +133,22 @@ def test_raise_queue():
     queue = Queue()
     expected = "This is Empty queue"
     assert expected == queue.peek()
+
+
+def test_raise_queue():
+    pseudo = Pseudo_queue()
+    pseudo.enqueue('3')
+    pseudo.enqueue('4')
+    expected = "4"
+    actual = pseudo.rear
+    assert expected == actual
+
+
+def test_raise_queue():
+    pseudo = Pseudo_queue()
+    pseudo.enqueue('3')
+    pseudo.enqueue('4')
+    pseudo.dequeue()
+    expected = '4'
+    actual = pseudo.rear
+    assert expected == actual
