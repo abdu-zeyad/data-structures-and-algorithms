@@ -44,14 +44,14 @@ class Queue():
 
 class Dog:
     def __init__(self, name):
-        self.type = "dog"
+        self.kind = "dog"
         self.name = name
         self.next = None
 
 
 class Cat:
     def __init__(self, name):
-        self.type = "cat"
+        self.kind = "cat"
         self.name = name
         self.next = None
 
@@ -62,28 +62,27 @@ class AnimalShelter:
         self.dog = Queue()
 
     def enqueue(self, animal):
-        if animal.type == 'dog':
+        if animal.kind == 'dog':
             self.dog.enqueue(animal.name)
-            print('Add Dog')
 
-        elif animal.type == 'cat':
+        elif animal.kind == 'cat':
             self.cat.enqueue(animal.name)
-            print('Add Cat')
 
     def dequeue(self, pref):
 
-        if pref == "dog":
-            self.dog.dequeue()
-
-        elif pref == "cat":
+        if pref == "cat":
             self.cat.dequeue()
+
+        elif pref == "dog":
+            self.dog.dequeue()
 
         else:
             return 'Null'
 
 
 shelter = AnimalShelter()
-pop = Dog('pop')
 ginger = Cat('ginger')
-shelter.enqueue(pop)
 shelter.enqueue(ginger)
+shelter.dequeue('cat')
+
+print(shelter.cat.front)
