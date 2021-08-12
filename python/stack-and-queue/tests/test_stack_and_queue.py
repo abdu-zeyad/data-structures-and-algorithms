@@ -134,17 +134,7 @@ def test_raise_queue():
     expected = "This is Empty queue"
     assert expected == queue.peek()
 
-
-def test_raise_queue():
-    pseudo = Pseudo_queue()
-    pseudo.enqueue('3')
-    pseudo.enqueue('4')
-    expected = "4"
-    actual = pseudo.rear
-    assert expected == actual
-
-
-def test_raise_queue():
+def test_raise_queuea():
     pseudo = Pseudo_queue()
     pseudo.enqueue('3')
     pseudo.enqueue('4')
@@ -152,3 +142,30 @@ def test_raise_queue():
     expected = '4'
     actual = pseudo.rear
     assert expected == actual
+
+
+def test_animal():
+    shelter = AnimalShelter()
+    ginger = Cat('ginger')
+    shelter.enqueue(ginger)
+    expected = 'ginger'
+    actual = shelter.cat.front.value
+    assert expected == actual
+
+
+def test_animal2():
+    shelter = AnimalShelter()
+    pop = Dog('pop')
+    shelter.enqueue(pop)
+    expected = 'pop'
+    actual = shelter.dog.front.value
+    assert expected == actual
+
+
+def test_animal2():
+    shelter = AnimalShelter()
+    pop = Dog('pop')
+    shelter.enqueue(pop)
+    shelter.dequeue('dog')
+    expected = None
+    actual = shelter.dog.front

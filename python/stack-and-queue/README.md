@@ -30,4 +30,10 @@ dequeue method: for removing stack from the queue
 
 <!-- Description of each method publicly available to your Stack and Queue-->
 
-https://github.com/abdu-zeyad/data-structures-and-algorithms/pull/28
+https://github.com/abdu-zeyad/data-structures-and-algorithms/pull/29
+
+
+
+code challenge  12 
+![whiteboared](code12.jpg)
+
