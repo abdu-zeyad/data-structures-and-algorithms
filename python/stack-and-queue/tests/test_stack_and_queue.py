@@ -1,6 +1,6 @@
 from stack_and_queue import __version__
 from stack_and_queue.stack_and_queue import (Stack, Queue, Pseudo_queue)
-from stack_and_queue.Animal_shelter import (AnimalShelter)
+from stack_and_queue.animal_shelter.Animal_shelter import (AnimalShelter)
 
 
 def test_version():
@@ -154,9 +154,10 @@ def test_raise_queuea():
     actual = pseudo.rear
     assert expected == actual
 
-    def test_animal():
-        shelter = AnimalShelter()
-        shelter.enqueue('3')
-        expected = '4'
-        actual = pseudo.rear
-        assert expected == actual
+
+def test_animal():
+    shelter = AnimalShelter()
+    shelter.enqueue('cat')
+    expected = 'cat'
+    actual = shelter
+    assert expected == actual
