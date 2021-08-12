@@ -1,5 +1,7 @@
 from stack_and_queue import __version__
 from stack_and_queue.stack_and_queue import (Stack, Queue, Pseudo_queue)
+from stack_and_queue.animal_shelter.Animal_shelter import AnimalShelter, Dog, Cat
+from stack_and_queue.bracket.Bracket import Stack, validate_brackets
 
 
 def test_version():
@@ -134,6 +136,7 @@ def test_raise_queue():
     expected = "This is Empty queue"
     assert expected == queue.peek()
 
+
 def test_raise_queuea():
     pseudo = Pseudo_queue()
     pseudo.enqueue('3')
@@ -169,3 +172,20 @@ def test_animal2():
     shelter.dequeue('dog')
     expected = None
     actual = shelter.dog.front
+    assert expected == actual
+
+
+def test_bracket():
+    s = '[asdasd()]'
+    x = validate_brackets(s)
+    expected = True
+    actual = x
+    assert expected == actual
+
+
+def test_bracket2():
+    s = '[asdasd(()]'
+    x = validate_brackets(s)
+    expected = False
+    actual = x
+    assert expected == actual
