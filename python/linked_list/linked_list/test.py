@@ -75,6 +75,21 @@ class Linked_list:
         return data
 
 
+def zip_list(list1, list2):
+    values = []
+    cur1 = list1.head
+    cur2 = list2.head
+
+    while cur1:
+        values += cur1.value
+        cur1 = cur1.next
+        values += cur2.value
+        cur2 = cur2.next
+
+    for i in values:
+        print(i)
+
+
 ll = Linked_list()
 
 ll.append(1)
@@ -86,3 +101,14 @@ ll.insert_before(2, 9)
 ll.insert_after(3, 9)
 ll.kth_from_end(3)
 print(ll)
+
+
+ll2 = Linked_list()
+ll2.append(1)
+ll2.append(5)
+ll2.append(8)
+ll2.append(2)
+print(ll2)
+
+
+# zip_list(ll, ll2)
