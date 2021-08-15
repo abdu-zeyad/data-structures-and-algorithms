@@ -56,7 +56,7 @@ class BinaryTree:
         return tree(self.root)
 
 
-class BinarySearchTree:
+class BinarySearchTree(BinaryTree):
     def __init__(self):
         self.root = None
 
