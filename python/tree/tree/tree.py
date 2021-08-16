@@ -92,7 +92,7 @@ class BinarySearchTree(BinaryTree):
 
 if __name__ == "__main__":
     bt = BinaryTree()
-    bt.root.value = 4
+    bt.root.value = 5
     bt.root.right = Node(5)
     bt.root.left = Node(7)
     bt.root.left.left = Node(2)
