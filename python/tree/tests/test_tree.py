@@ -93,3 +93,16 @@ def test_max_val():
     actual = tree.max()
     expected = 15
     assert actual == expected
+
+
+def test_breadth_first():
+    bt = BinaryTree()
+    bt.root.value = 1
+    bt.root.right = Node(3)
+    bt.root.left = Node(2)
+    bt.root.left.left = Node(4)
+    bt.root.left.right = Node(5)
+    actual = bt.breadth_first()
+
+    expected = [1, 2, 4, 5, 3]
+    assert actual == expected

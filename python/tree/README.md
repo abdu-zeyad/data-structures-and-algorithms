@@ -44,3 +44,35 @@ def max(self):
             return self.max
 
         return tree(self.root)
+
+
+
+challenge 17 :
+# Challenge Summary
+Write a function called breadth first
+Arguments: tree
+Return: list of all values in the tree, in the order they were encountered
+
+
+## Whiteboard Process
+![whitevoard](chellange17.jpg)
+## Approach & Efficiency
+using a recursive function to iterate over the right and left nodes to find print all the elements.
+## Solution
+ def breadth_first(self):
+        values = []
+        tree = self.root
+        values.append(tree.value)
+        # print(values)
+
+        def walk(left, right):
+            if left is not None:
+                values.append(left.value)
+                walk(left.left, left.right)
+
+            if right is not None:
+                values.append(right.value)
+                walk(right.left, right.right)
+
+        walk(tree.left, tree.right)
+        return values
