@@ -22,6 +22,7 @@ class BinaryTree:
             trav += (str(start.value) + "-")
             trav = self.pre_order(start.left, trav)
             trav = self.pre_order(start.right, trav)
+
         return trav
 
     def in_order(self, start, trav):
@@ -38,8 +39,24 @@ class BinaryTree:
             trav += (str(start.value) + "-")
         return trav
 
+    def max(self):
+        if not self.root:
+            return "Tree is Empty"
+        self.max = self.root.value
 
-class BinarySearchTree:
+        def tree(node):
+            if node.value > self.max:
+                self.max = node.value
+            if node.left:
+                tree(node.left)
+            if node.right:
+                tree(node.right)
+            return self.max
+
+        return tree(self.root)
+
+
+class BinarySearchTree(BinaryTree):
     def __init__(self):
         self.root = None
 
@@ -75,21 +92,22 @@ class BinarySearchTree:
 
 if __name__ == "__main__":
     bt = BinaryTree()
-    # bt.root.right = Node(5)
-    # bt.root.left = Node(7)
-    # bt.root.left.left = Node(2)
-    # bt.root.left.right = Node(6)
-    # bt.root.left.right.left = Node(5)
-    # bt.root.left.right.right = Node(11)
-    # bt.root.right.right = Node(9)
-    # bt.root.right.right.left = Node(4)
+    bt.root.value = 5
+    bt.root.right = Node(5)
+    bt.root.left = Node(7)
+    bt.root.left.left = Node(2)
+    bt.root.left.right = Node(6)
+    bt.root.left.right.left = Node(5)
+    bt.root.left.right.right = Node(11)
+    bt.root.right.right = Node(9)
+    bt.root.right.right.left = Node(4)
 
-    # print(bt.print_tree("pre_order"))
-    # print(bt.print_tree("post_order"))
-    # print(bt.print_tree("in_order"))
-    # bst = BinarySearchTree()
-    # bst.add(5)
-    # bst.add(4)
-    # bst.add(6)
-    # bst.contains(5)
-    # print(bst.contains(5))
+    print(bt.print_tree("pre_order"))
+    print(bt.print_tree("post_order"))
+    print(bt.print_tree("in_order"))
+    bst = BinarySearchTree()
+    bst.add(5)
+    bst.add(4)
+    bst.add(6)
+    bst.contains(5)
+    print(bst.contains(5))

@@ -78,3 +78,18 @@ def test_print_tree_contain():
     actual = bst.contains(5)
     excepted = True
     assert actual == excepted
+
+
+def test_max_val():
+    tree = BinaryTree()
+    tree.root = Node(2)
+    tree.root.left = Node(7)
+    tree.root.left.left = Node(2)
+    tree.root.left.right = Node(6)
+    tree.root.left.right.left = Node(5)
+    tree.root.left.right.left = Node(11)
+    tree.root.right = Node(15)
+
+    actual = tree.max()
+    expected = 15
+    assert actual == expected

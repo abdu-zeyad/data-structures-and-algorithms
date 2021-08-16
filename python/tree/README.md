@@ -17,3 +17,30 @@ in order : left > root > right
 post order : left > right > root 
 add : adding a new node
 contains: check if a value inside the tree
+
+code challenge :
+
+# Challenge Summary
+Find the Maximum Value in a Binary Tree
+
+
+## Whiteboard Process
+![whitevoard](chellange16.jpg)
+## Approach & Efficiency
+using a recursive function to iterate over the right and left nodes to find the maximum.
+## Solution
+def max(self):
+        if not self.root:
+            return "Tree is Empty"
+        self.max = self.root.value
+
+        def tree(node):
+            if node.value > self.max:
+                self.max = node.value
+            if node.left:
+                tree(node.left)
+            if node.right:
+                tree(node.right)
+            return self.max
+
+        return tree(self.root)
