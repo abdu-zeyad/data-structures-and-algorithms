@@ -83,6 +83,32 @@ class BinaryTree:
         return values
 
 
+def fizz_buzz_tree(bt):
+    fb = BinaryTree()
+
+    def walk(node):
+        if node != None:
+            if node.value % 3 == 0 and node.value % 5 == 0:
+                fb_node = Node("FizzBuzz")
+            elif node.value % 3 == 0:
+                fb_node = Node("Fizz")
+            elif node.value % 5 == 0:
+                fb_node = Node("Buzz")
+            else:
+                fb_node = Node(str(node.value))
+
+            if node.left:
+                fb_node.left = walk(node.left)
+            if node.right:
+                fb_node.right = walk(node.right)
+
+            return fb_node
+
+    fb.root = walk(bt.root)
+
+    return fb
+
+
 class BinarySearchTree(BinaryTree):
     def __init__(self):
         self.root = None
@@ -126,11 +152,14 @@ if __name__ == "__main__":
     bt.root.left.right.left = Node(5)
     bt.root.left.right.right = Node(11)
     bt.root.right.right = Node(9)
-    bt.root.right.right.left = Node(4)
+    bt.root.right.right.left = Node(15)
     # print(bt.breadth_first())
     print(bt.postOrder())
     print(bt.preOrder())
     print(bt.inOrder())
+
+    fb = fizz_buzz_tree(bt)
+    print(fb.preOrder())
 
     bst = BinarySearchTree()
     bst.add(5)

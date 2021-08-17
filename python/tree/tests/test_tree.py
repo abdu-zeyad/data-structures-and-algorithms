@@ -1,5 +1,5 @@
 from tree import __version__
-from tree.tree import BinaryTree, BinarySearchTree, Node
+from tree.tree import BinaryTree, BinarySearchTree, Node, fizz_buzz_tree
 
 
 def test_version():
@@ -97,4 +97,21 @@ def test_breadth_first():
     bt.root.left.right = Node(5)
     actual = bt.breadth_first()
     expected = [1, 2, 4, 5, 3]
+    assert actual == expected
+
+
+def test_fizz_buzz_tree():
+    bt = BinaryTree(1)
+    bt.root.right = Node(5)
+    bt.root.left = Node(7)
+    bt.root.left.left = Node(2)
+    bt.root.left.right = Node(6)
+    bt.root.left.right.left = Node(5)
+    bt.root.left.right.right = Node(11)
+    bt.root.right.right = Node(9)
+    bt.root.right.right.left = Node(15)
+    fb = fizz_buzz_tree(bt)
+    actual = fb.preOrder()
+    expected = ['1', '7', '2', 'Fizz', 'Buzz',
+                '11', 'Buzz', 'Fizz', 'FizzBuzz']
     assert actual == expected
