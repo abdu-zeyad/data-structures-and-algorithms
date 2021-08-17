@@ -6,38 +6,47 @@ class Node:
 
 
 class BinaryTree:
-    def __init__(self, root=None):
-        self.root = Node(root)
+    def __init__(self, value=None):
+        if value:
+            self.root = Node(value)
+        else:
+            self.root = None
 
-    def print_tree(self, trav_type):
-        if trav_type == "pre_order":
-            return self.pre_order(self.root, "")
-        elif trav_type == "in_order":
-            return self.post_order(self.root, "")
-        elif trav_type == "post_order":
-            return self.in_order(self.root, "")
+    def preOrder(self):
+        output = []
 
-    def pre_order(self, start, trav):
-        if start:
-            trav += (str(start.value) + "-")
-            trav = self.pre_order(start.left, trav)
-            trav = self.pre_order(start.right, trav)
+        def traversal(node):
+            if node != None:
+                output.append(node.value)
+                traversal(node.left)
+                traversal(node.right)
 
-        return trav
+        traversal(self.root)
+        return output
 
-    def in_order(self, start, trav):
-        if start:
-            trav = self.in_order(start.left, trav)
-            trav += (str(start.value) + "-")
-            trav = self.in_order(start.right, trav)
-        return trav
+    def inOrder(self):
+        output = []
 
-    def post_order(self, start, trav):
-        if start:
-            trav = self.post_order(start.left, trav)
-            trav = self.post_order(start.right, trav)
-            trav += (str(start.value) + "-")
-        return trav
+        def traversal(node):
+            if node != None:
+                traversal(node.left)
+                output.append(node.value)
+                traversal(node.right)
+
+        traversal(self.root)
+        return output
+
+    def postOrder(self):
+        output = []
+
+        def traversal(node):
+            if node != None:
+                traversal(node.left)
+                traversal(node.right)
+                output.append(node.value)
+
+        traversal(self.root)
+        return output
 
     def max(self):
         if not self.root:
@@ -72,9 +81,6 @@ class BinaryTree:
 
         walk(tree.left, tree.right)
         return values
-
-    def fizz_buzz_tree(self):
-        pass
 
 
 class BinarySearchTree(BinaryTree):
@@ -112,21 +118,20 @@ class BinarySearchTree(BinaryTree):
 
 
 if __name__ == "__main__":
-    bt = BinaryTree()
-    bt.root.value = 1
-    bt.root.left = Node(2)
-    bt.root.right = Node(3)
-    bt.root.left.left = Node(4)
-    bt.root.left.right = Node(5)
-    bt.root.left.right.left = Node(6)
-    bt.root.left.right.right = Node(7)
-    # bt.root.right.right = Node(9)
-    # bt.root.right.right.left = Node(4)
-    bt.breadth_first()
+    bt = BinaryTree(1)
+    bt.root.right = Node(5)
+    bt.root.left = Node(7)
+    bt.root.left.left = Node(2)
+    bt.root.left.right = Node(6)
+    bt.root.left.right.left = Node(5)
+    bt.root.left.right.right = Node(11)
+    bt.root.right.right = Node(9)
+    bt.root.right.right.left = Node(4)
+    # print(bt.breadth_first())
+    print(bt.postOrder())
+    print(bt.preOrder())
+    print(bt.inOrder())
 
-    print(bt.print_tree("pre_order"))
-    print(bt.print_tree("post_order"))
-    print(bt.print_tree("in_order"))
     bst = BinarySearchTree()
     bst.add(5)
     bst.add(4)
