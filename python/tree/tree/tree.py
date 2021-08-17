@@ -73,6 +73,9 @@ class BinaryTree:
         walk(tree.left, tree.right)
         return values
 
+    def fizz_buzz_tree(self):
+        pass
+
 
 class BinarySearchTree(BinaryTree):
     def __init__(self):
