@@ -55,6 +55,24 @@ class BinaryTree:
 
         return tree(self.root)
 
+    def breadth_first(self):
+        values = []
+        tree = self.root
+        values.append(tree.value)
+        # print(values)
+
+        def walk(left, right):
+            if left is not None:
+                values.append(left.value)
+                walk(left.left, left.right)
+
+            if right is not None:
+                values.append(right.value)
+                walk(right.left, right.right)
+
+        walk(tree.left, tree.right)
+        return values
+
 
 class BinarySearchTree(BinaryTree):
     def __init__(self):
@@ -92,15 +110,16 @@ class BinarySearchTree(BinaryTree):
 
 if __name__ == "__main__":
     bt = BinaryTree()
-    bt.root.value = 5
-    bt.root.right = Node(5)
-    bt.root.left = Node(7)
-    bt.root.left.left = Node(2)
-    bt.root.left.right = Node(6)
-    bt.root.left.right.left = Node(5)
-    bt.root.left.right.right = Node(11)
-    bt.root.right.right = Node(9)
-    bt.root.right.right.left = Node(4)
+    bt.root.value = 1
+    bt.root.left = Node(2)
+    bt.root.right = Node(3)
+    bt.root.left.left = Node(4)
+    bt.root.left.right = Node(5)
+    bt.root.left.right.left = Node(6)
+    bt.root.left.right.right = Node(7)
+    # bt.root.right.right = Node(9)
+    # bt.root.right.right.left = Node(4)
+    bt.breadth_first()
 
     print(bt.print_tree("pre_order"))
     print(bt.print_tree("post_order"))
