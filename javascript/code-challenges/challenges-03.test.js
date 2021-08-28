@@ -53,7 +53,7 @@ For example, oddValues([1,2,3]) returns [1,3].
 
 const oddValues = (arr) => {
   let newArr = arr.filter((item) => {
-    item % 2 === 0;
+    return item % 2 !== 0;
   });
   return newArr;
 };
