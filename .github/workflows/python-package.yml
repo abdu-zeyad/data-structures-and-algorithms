@@ -27,6 +27,6 @@ jobs:
       - name: Run pytest
         shell: bash
         run:
-          poetry install pytest
+          poetry add pytest
           python -m poetry run python -m pytest -v tests
         working-directory: ./python
