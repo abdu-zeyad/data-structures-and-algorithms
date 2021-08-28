@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-<<<<<<< HEAD
     - uses: actions/checkout@v2
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
@@ -32,24 +31,3 @@ jobs:
     - name: Test with pytest
       run: |
         python3 -m pytest ./python/
-=======
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Run image
-        uses: abatilo/actions-poetry@v2.0.0
-        with:
-          poetry-version: ${{ matrix.poetry-version }}
-      - name: View poetry --help
-        run: poetry --help
-      - name: Install dependencies
-        run: poetry install
-        working-directory: ./python
-      - name: Run pytest
-        shell: bash
-        run:
-          poetry add pytest
-          python -m poetry run python -m pytest -v tests
-        working-directory: ./python
->>>>>>> 9600f9bde59f4db1ef2acef725948f4fe04eaea7
