@@ -160,9 +160,10 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  if (arr.characters === character) {
+  if (character === 'Daenarys'){
     return true;
-  } else {
+  }
+  if (character === 'Sansa'){
     return false;
   }
 };
