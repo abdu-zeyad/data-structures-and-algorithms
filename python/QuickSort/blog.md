@@ -1,4 +1,4 @@
-# Merge Sort
+# Quick Sort
 
 QuickSort is a Divide and Conquer algorithm. It picks an element as pivot and partitions the given array around the picked pivot. There are many different versions of quickSort that pick pivot in different ways.
 
@@ -31,13 +31,13 @@ Pass 1:
 
 Pass 1 of quick Sort
 
-In the first pass through of the merge sort, divide the array into 2 arrays, then iterate tis process until the 2 arrays are only one element, compare between them and assign the first element of the new array with the lowest and the other element as the second element.
-[4,8] and the other elements are [23,45,16]
+In the first pass through of the merge sort, divide the array into 2 arrays, define a pivot, and put the numbers above it on the right and on the left put the smaller numbers.
+[8,4,23,42,16]=> pivot = 16, left array = [8,4], right array = [23,42]
 Pass 2:
 
 Pass 2 of quick Sort
 
-The second pass is to merge the left and the right sides, compare each element to sort them from the lowest to the highest.
+repeated the first step with new pivot which is the last element
 Pass 3:
 
 Pass 3 of quick Sort
