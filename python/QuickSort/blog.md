@@ -1,56 +1,46 @@
 # Merge Sort
 
-Merge Sort is a Divide and Conquer algorithm. It divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves.
+QuickSort is a Divide and Conquer algorithm. It picks an element as pivot and partitions the given array around the picked pivot. There are many different versions of quickSort that pick pivot in different ways.
 
 Pseudocode:
-
-Mergesort(arr)
-    DECLARE n <-- arr.length
-    if n > 1
-      DECLARE mid <-- n/2
-      DECLARE left <-- arr[0...mid]
-      DECLARE right <-- arr[mid...n]
-      Mergesort(left)
-      Mergesort(right)
-      Merge(left, right, arr)
-
-Merge(left, right, arr)
-    DECLARE i <-- 0
-    DECLARE j <-- 0
-    DECLARE k <-- 0
-    while i < left.length && j < right.length
-        if left[i] <= right[j]
-            arr[k] <-- left[i]
-            i <-- i + 1
-        else
-            arr[k] <-- right[j]
-            j <-- j + 1
-
-        k <-- k + 1
-
-    if i = left.length
-       set remaining entries in arr to remaining values in right
-    else
-       set remaining entries in arr to remaining values in left
-
+ QuickSort(arr, left, right)
+ if left < right
+        DEFINE position <-- Partition(arr, left, right)
+        QuickSort(arr, left, position - 1)
+        QuickSort(arr, position + 1, right)
+ALGORITHM Partition(arr, left, right)
+    DEFINE pivot <-- arr[right]
+    DEFINE low <-- left - 1
+    for i <- left to right do
+        if arr[i] <= pivot
+            low++
+            Swap(arr, i, low)
+     Swap(arr, right, low + 1)
+    // return the pivot index point
+     return low + 1
+ALGORITHM Swap(arr, i, low)
+    DEFINE temp;
+    temp <-- arr[i]
+    arr[i] <-- arr[low]
+    arr[low] <-- temp
 Trace:
 
 - Sample Array: [8,4,23,42,16]
 
 Pass 1:
 
-Pass 1 of Insertion Sort
+Pass 1 of quick Sort
 
 In the first pass through of the merge sort, divide the array into 2 arrays, then iterate tis process until the 2 arrays are only one element, compare between them and assign the first element of the new array with the lowest and the other element as the second element.
 [4,8] and the other elements are [23,45,16]
 Pass 2:
 
-Pass 2 of Insertion Sort
+Pass 2 of quick Sort
 
 The second pass is to merge the left and the right sides, compare each element to sort them from the lowest to the highest.
 Pass 3:
 
-Pass 3 of Insertion Sort
+Pass 3 of quick Sort
 
 The third pass merge the entire new array and return it.
 [4,8,16,32,42]

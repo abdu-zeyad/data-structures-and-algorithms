@@ -1,49 +1,46 @@
 # Challenge Summary
 
-Write a blog explained how merge sort works.
+Write a blog explained how merge quick works.
 
 [Blog link](blog.md)
 
 ## Whiteboard Process
 
-![MergeSort](merge.jpg)
+![QuickSort](quicksort.jpg)
 
 ## Approach & Efficiency
 
 Efficiency
 
-Time complexity: T(n) = 2T(n/2) + θ(n)
+Time complexity: T(n) = T(k) + T(n-k-1) + (n)
 
  Space complexity : O(n)
 
 ## Solution
 <!-- Show how to run your code, and examples of it in action -->
 
-def mergeSort(arr):
-    if len(arr) > 1:
-        mid = len(arr)//2
-        L = arr[:mid]
-        R = arr[mid:]
-        mergeSort(L)
-        mergeSort(R)
-        i = j = k = 0
-        # making the comparison
-        while i < len(L) and j < len(R):
-            if L[i] < R[j]:
-                arr[k] = L[i]
-                i += 1
-            else:
-                arr[k] = R[j]
-                j += 1
-            k += 1
+def partition(start, end, array):
 
-        while i < len(L):
-            arr[k] = L[i]
-            i += 1
-            k += 1
+    pivot_index = start
+    pivot = array[pivot_index]
 
-        while j < len(R):
-            arr[k] = R[j]
-            j += 1
-            k += 1
-    return arr
+    while start < end:
+
+        while start < len(array) and array[start] <= pivot:
+            start += 1
+
+        while array[end] > pivot:
+            end -= 1
+
+        if(start < end):
+            array[start], array[end] = array[end], array[start]
+
+    array[end], array[pivot_index] = array[pivot_index], array[end]
+    return end
+
+def quick_sort(start, end, array):
+
+    if (start < end):
+        p = partition(start, end, array)
+        quick_sort(start, p - 1, array)
+        quick_sort(p + 1, end, array)
