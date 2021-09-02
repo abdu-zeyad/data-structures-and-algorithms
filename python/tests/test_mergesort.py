@@ -1,5 +1,5 @@
-from mergesort import __version__
-from mergesort.merge_sort import mergeSort
+from code_challenges.MergeSort.mergesort import __version__
+from code_challenges.MergeSort.mergesort.merge_sort import mergeSort
 
 
 def test_version():

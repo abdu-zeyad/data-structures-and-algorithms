@@ -1,5 +1,5 @@
-from blog import __version__
-from blog.insertion_sort import insertionSort
+from code_challenges.blog.blog import __version__
+from code_challenges.blog.blog.insertion_sort import insertionSort
 
 
 def test_version():

@@ -1,5 +1,5 @@
-from tree import __version__
-from tree.tree import BinaryTree, BinarySearchTree, Node, fizz_buzz_tree
+from code_challenges.tree.tree import __version__
+from code_challenges.tree.tree.tree import BinaryTree, BinarySearchTree, Node, fizz_buzz_tree
 
 
 def test_version():

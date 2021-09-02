@@ -1,5 +1,5 @@
-from quicksort import __version__
-from quicksort.quicksort import quick_sort
+from code_challenges.QuickSort.quicksort import __version__
+from code_challenges.QuickSort.quicksort.quicksort import quick_sort
 
 
 def test_version():
