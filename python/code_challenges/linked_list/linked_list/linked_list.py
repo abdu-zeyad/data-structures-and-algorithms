@@ -61,27 +61,22 @@ class Linked_list:
                 break
             current_value = current_value.next
 
-    # def __str__(self):
+    def __str__(self):
 
-    #     string = ''
-    #     current_value = self.head
-    #     while (current_value):
-    #         string = string + f"{ { current_value.value } } -> "
-    #         current_value = current_value.next
-    #     else:
-    #         string = string + 'Null'
-    #     return string
+        string = ''
+        current_value = self.head
+        while (current_value):
+            string = string + f"{ { current_value.value } } -> "
+            current_value = current_value.next
+        else:
+            string = string + 'Null'
+        return string
 
 
 if __name__ == "__main__":
 
     linked_list = Linked_list()
-    linked_list.insert({"khaled": 5})
-    # linked_list.insert(2)
-    # linked_list.insert(1)
-    # linked_list.append(10)
-    # # linked_list.insert_before(10, 5)
-    # # linked_list.insert_after(10, 5)
-    # # linked_list.insert_after(2, 5)
-    # # linked_list.insert_before(2, 5)
-    print(linked_list)
+    # linked_list.insert(('abd', 10))
+    # linked_list.insert(('abd', 12))
+    # linked_list.insert(('abd', 10))
+    # print(linked_list)
