@@ -9,19 +9,37 @@ class Hashtable(Linked_list):
 
     def add(self, key, value):
         index = self.hash(key)
-
         if self.array[index] is None:
             self.array[index] = Linked_list()
             self.array[index].insert((key, value))
+            return self.array[index]
         else:
             self.array[index].insert((key, value))
-            print(self.array[index])
+            return self.array[index]
 
     def get(self, key):
-        pass
+        index = self.hash(key)
+        # print(self.array[index].head.value[0])
+        current_value = self.array[index].head
+        while (current_value):
+            key_inside = current_value.value[0]
+            if key_inside == key:
+                return (current_value.value[1])
+
+            current_value = current_value.next
 
     def contains(self, key):
-        pass
+        index = self.hash(key)
+        if self.array[index] is None:
+            return False
+
+        current_value = self.array[index].head
+        while (current_value):
+            key_inside = current_value.value[0]
+            if key_inside == key:
+                return True
+            current_value = current_value.next
+        return False
 
     def hash(self, key):
         value = 0
@@ -33,5 +51,9 @@ class Hashtable(Linked_list):
 
 ht = Hashtable()
 ht.add('abd', 10)
-ht.add('abd', 12)
-# ht.add('abd', 10)
+ht.add('adb', 12)
+ht.add('dba', 18)
+ht.add('dab', 20)
+print(ht.get('adb'))
+
+print(ht.contains('abd'))
