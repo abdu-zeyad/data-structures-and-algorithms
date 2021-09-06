@@ -14,14 +14,16 @@ def test_empty_tree():
 
 
 def test_single_node():
-    bt = BinaryTree(1)
+    bt = BinaryTree()
+    bt.root = Node(1)
     actual = bt.root.value
     excepted = 1
     assert actual == excepted
 
 
 def test_print_tree_pre_order():
-    bt = BinaryTree(1)
+    bt = BinaryTree()
+    bt.root = Node(1)
     bt.root.right = Node(5)
     bt.root.left = Node(7)
     bt.root.left.left = Node(2)
@@ -36,7 +38,8 @@ def test_print_tree_pre_order():
 
 
 def test_print_tree_in_order():
-    bt = BinaryTree(1)
+    bt = BinaryTree()
+    bt.root = Node(1)
     bt.root.right = Node(5)
     bt.root.left = Node(7)
     bt.root.left.left = Node(2)
@@ -51,7 +54,9 @@ def test_print_tree_in_order():
 
 
 def test_print_tree_post_order():
-    bt = BinaryTree(1)
+    bt = BinaryTree()
+    bt.root = Node(1)
+
     bt.root.right = Node(5)
     bt.root.left = Node(7)
     bt.root.left.left = Node(2)
@@ -76,7 +81,9 @@ def test_print_tree_contain():
 
 
 def test_max_val():
-    tree = BinaryTree(1)
+    tree = BinaryTree()
+    tree.root = Node(1)
+
     tree.root.left = Node(7)
     tree.root.left.left = Node(2)
     tree.root.left.right = Node(6)
@@ -90,7 +97,9 @@ def test_max_val():
 
 
 def test_breadth_first():
-    bt = BinaryTree(1)
+    bt = BinaryTree()
+    bt.root = Node(1)
+
     bt.root.left = Node(2)
     bt.root.right = Node(3)
     bt.root.left.left = Node(4)
@@ -101,7 +110,9 @@ def test_breadth_first():
 
 
 def test_fizz_buzz_tree():
-    bt = BinaryTree(1)
+    bt = BinaryTree()
+    bt.root = Node(1)
+
     bt.root.right = Node(5)
     bt.root.left = Node(7)
     bt.root.left.left = Node(2)

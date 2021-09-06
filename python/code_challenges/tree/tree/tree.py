@@ -7,10 +7,7 @@ class Node:
 
 class BinaryTree:
     def __init__(self, value=None):
-        if value:
-            self.root = Node(value)
-        else:
-            self.root = None
+        self.root = None
 
     def preOrder(self):
         output = []
@@ -144,7 +141,8 @@ class BinarySearchTree(BinaryTree):
 
 
 if __name__ == "__main__":
-    bt = BinaryTree(1)
+    bt = BinaryTree()
+    bt.root = Node(6)
     bt.root.right = Node(5)
     bt.root.left = Node(7)
     bt.root.left.left = Node(2)
