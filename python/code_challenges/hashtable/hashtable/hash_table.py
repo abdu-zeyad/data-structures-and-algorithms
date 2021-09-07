@@ -11,10 +11,10 @@ class Hashtable(Linked_list):
         index = self.hash(key)
         if self.array[index] is None:
             self.array[index] = Linked_list()
-            self.array[index].insert((key, value))
+            self.array[index].insert([key, value])
             return self.array[index]
         else:
-            self.array[index].insert((key, value))
+            self.array[index].insert([key, value])
             return self.array[index]
 
     def get(self, key):
