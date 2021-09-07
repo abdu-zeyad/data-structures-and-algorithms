@@ -12,8 +12,6 @@ def left_join(ht1, ht2):
         if i:
             array1.append(i.head.value)
 
-    print(array2)
-    print(array1)
     for i in array1:
         for j in array2:
             if i[0] == j[0]:
