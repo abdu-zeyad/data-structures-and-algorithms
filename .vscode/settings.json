@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
         "./python/code_challenges/linked_list"
-    ]
+    ],
+    "python.formatting.provider": "black"
 }

@@ -21,10 +21,10 @@ class Hashtable(Linked_list):
         index = self.hash(key)
         # print(self.array[index].head.value[0])
         current_value = self.array[index].head
-        while (current_value):
+        while current_value:
             key_inside = current_value.value[0]
             if key_inside == key:
-                return (current_value.value[1])
+                return current_value.value[1]
 
             current_value = current_value.next
 
@@ -34,7 +34,7 @@ class Hashtable(Linked_list):
             return False
 
         current_value = self.array[index].head
-        while (current_value):
+        while current_value:
             key_inside = current_value.value[0]
             if key_inside == key:
                 return True
@@ -50,10 +50,7 @@ class Hashtable(Linked_list):
 
 
 ht = Hashtable()
-ht.add('abd', 10)
-ht.add('adb', 12)
-ht.add('dba', 18)
-ht.add('dab', 20)
-print(ht.get('adb'))
-
-print(ht.contains('abd'))
+ht.add("abd", 10)
+ht.add("adb", 12)
+ht.add("dba", 18)
+ht.add("dab", 20)
