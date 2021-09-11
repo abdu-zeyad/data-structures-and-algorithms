@@ -24,7 +24,7 @@ def test_intersection():
     bt2.root.right.right = Node(5)
     bt2.root.right.left = Node(13)
     actual = tree_intersection(bt1, bt2)
-    expected = [3, 11, 5, 9]
+    expected = [11, 3, 9, 5]
     assert actual == expected
 
 
