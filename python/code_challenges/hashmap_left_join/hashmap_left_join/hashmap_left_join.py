@@ -2,22 +2,22 @@ from python.code_challenges.hashtable.hashtable.hash_table import Hashtable
 
 
 def left_join(ht1, ht2):
-    intersection_output = []
+    lj_output = []
     for i in ht1.array:
         if i:
-            intersection = []
+            lj = []
             current_value = i.head
             while current_value:
-                intersection.append(current_value.value[0])
-                intersection.append(current_value.value[1])
+                lj.append(current_value.value[0])
+                lj.append(current_value.value[1])
                 if ht2.contains(current_value.value[0]):
-                    intersection.append(ht2.get(current_value.value[0]))
+                    lj.append(ht2.get(current_value.value[0]))
                 else:
-                    intersection.append(None)
+                    lj.append(None)
                 current_value = current_value.next
 
-            intersection_output.append(intersection)
-    return intersection_output
+            lj_output.append(lj)
+    return lj_output
 
 
 ht1 = Hashtable()
