@@ -1,4 +1,8 @@
-from python.code_challenges.tree_intersection.tree_intersection.tree_intersection import tree_intersection, BinaryTree, Node
+from python.code_challenges.tree_intersection.tree_intersection.tree_intersection import (
+    tree_intersection,
+    BinaryTree,
+    Node,
+)
 
 
 def test_intersection():
@@ -20,7 +24,7 @@ def test_intersection():
     bt2.root.right.right = Node(5)
     bt2.root.right.left = Node(13)
     actual = tree_intersection(bt1, bt2)
-    expected = [11, 3, 5, 9]
+    expected = [3, 11, 5, 9]
     assert actual == expected
 
 

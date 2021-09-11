@@ -1,29 +1,23 @@
+from python.code_challenges.hashtable.hashtable.hash_table import Hashtable
 from python.code_challenges.tree.tree.tree import BinaryTree, Node
 
 
 def tree_intersection(bt1, bt2):
-    output = []
-    output2 = []
+
     intersection = []
+
+    ht = Hashtable()
 
     def traversal(node):
         if node != None:
+            ht.add(f"{node.value}", 0)
             traversal(node.left)
-            output.append(node.value)
             traversal(node.right)
+
     traversal(bt1.root)
-
-    def traversal2(node):
-        if node != None:
-            traversal2(node.left)
-            output2.append(node.value)
-            traversal2(node.right)
-    traversal2(bt2.root)
-
-    for i in output:
-        if i in output2:
-            if i not in intersection:
-                intersection.append(i)
+    for i in bt2.preOrder():
+        if ht.contains(f"{i}"):
+            intersection.append(i)
 
     return intersection
 
