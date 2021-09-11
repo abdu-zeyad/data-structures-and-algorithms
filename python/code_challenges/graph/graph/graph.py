@@ -1,28 +1,46 @@
-from python.code_challenges.linked_list.linked_list.linked_list import Node
+class Node:
+    def __init__(self, value):
+        self.value = value
 
 
 class Graph:
     def __init__(self):
-        self.adjacency_list = {}
+        self.adjList = {}
 
     def add_node(self, value):
         node = Node(value)
-        self.adjacency_list[node] = []
+        self.adjList[node.value] = []
+        print(self.adjList)
 
-    def add_edge(self, start_node, end_node, weight=1):
-        if start_node not in self.adjacency_list:
-            self.adjacency_list[start_node] = [{end_node: weight}]
+    def add_edge(self, start, end):
+        if start not in self.adjList:
+            self.adjList[start] = [{end}]
         else:
-            self.adjacency_list[start_node].append({end_node: weight})
+            self.adjList[start].append({end})
+
+    def size(self):
+        return len(self.adjList)
 
     def get_nodes(self):
-        return self.adjacency_list.keys()
+        return list(self.adjList.keys())
 
     def get_neighbors(self, node):
         output = []
-        for x in self.adjacency_list[node]:
+        for x in self.adjList[node]:
             output.append(x)
         return output
 
-    def size(self):
-        return len(self.adjacency_list)
+
+graph = Graph()
+graph.add_node(5)
+graph.add_node(4)
+graph.add_node(3)
+graph.add_node(2)
+graph.add_node(1)
+graph.add_edge(1, 3)
+graph.add_edge(4, 2)
+graph.add_edge(5, 3)
+graph.add_edge(1, 5)
+graph.add_edge(2, 4)
+
+print(graph.get_neighbors(4))
