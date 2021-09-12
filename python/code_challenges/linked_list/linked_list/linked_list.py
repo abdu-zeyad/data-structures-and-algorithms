@@ -19,7 +19,7 @@ class Linked_list:
 
     def includes(self, value):
         current_value = self.head
-        while (current_value):
+        while current_value:
             if current_value.value == value:
                 return True
             current_value = current_value.next
@@ -63,20 +63,44 @@ class Linked_list:
 
     def __str__(self):
 
-        string = ''
+        string = ""
         current_value = self.head
-        while (current_value):
+        while current_value:
             string = string + f"{ { current_value.value } } -> "
             current_value = current_value.next
         else:
-            string = string + 'Null'
+            string = string + "Null"
         return string
+
+    def remove_dublciate(self):
+        array = []
+        temp = self.head
+        if not temp:
+            return
+        while temp:
+            if temp.value not in array:
+                array.append(temp.value)
+            else:
+                temp.value = temp.next.value
+                temp.next = temp.next.next
+
+            temp = temp.next
+        return temp
 
 
 if __name__ == "__main__":
 
     linked_list = Linked_list()
-    # linked_list.insert(('abd', 10))
-    # linked_list.insert(('abd', 12))
-    # linked_list.insert(('abd', 10))
-    # print(linked_list)
+    linked_list.insert(1)
+    linked_list.append(2)
+    linked_list.append(3)
+    linked_list.append(4)
+    linked_list.append(5)
+    linked_list.append(3)
+    linked_list.append(6)
+    linked_list.append(7)
+    linked_list.append(5)
+    linked_list.append(8)
+    print(linked_list)
+    print(linked_list.remove_dublciate())
+    print(linked_list)
