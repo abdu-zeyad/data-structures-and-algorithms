@@ -1,56 +1,38 @@
-from python.code_challenges.stack_and_graph.stack_and_graph.stack_and_queue import Queue
+# from python.code_challenges.stack_and_graph.stack_and_graph.stack_and_queue import Queue
 
 
-class Node:
+class Vertex:
     def __init__(self, value):
         self.value = value
 
 
 class Graph:
     def __init__(self):
-        self.adjList = {}
+        self.adjacent_list = dict()
 
     def add_node(self, value):
-        node = Node(value)
-        self.adjList[node.value] = []
+        vertex = Vertex(value)
+        self.adjacent_list[vertex.value] = []
+        return vertex
 
     def add_edge(self, start, end):
-        if start.value not in self.adjList:
-            self.adjList[start.value] = [{end.value}]
-            print(start.value)
-        else:
-            self.adjList[start.value].append({end.value})
+        if start.value not in self.adjacent_list:
+            self.adjacent_list[start.value] = [end.value]
 
-    def size(self):
-        return len(self.adjList)
+        else:
+            self.adjacent_list[start.value].append(end.value)
 
     def get_nodes(self):
-        return list(self.adjList.keys())
+        return list(self.adjacent_list.keys())
 
-    def get_neighbors(self, node):
+    def get_neighbors(self, vertex):
         output = []
-        for x in self.adjList[node]:
+        for x in self.adjacent_list[vertex.value]:
             output.append(x)
         return output
 
-    def bfs(self, start_node):
-        nodes = []
-        visited = set()
-        breadth = Queue()
-        breadth.enqueue(start_node)
-
-        visited.add(start_node)
-        while breadth.length() > 0:
-            node = breadth.dequeue()
-            print(node)
-            nodes.append(node)
-            print(self.adjList[node])
-            for n in self.adjList[node]:
-                if n not in visited:
-                    breadth.enqueue(n)
-                    visited.add(n)
-
-        return nodes
+    def size(self):
+        return len(self.adjacent_list)
 
 
 graph = Graph()
@@ -59,11 +41,41 @@ graph.add_node(4)
 graph.add_node(3)
 graph.add_node(2)
 graph.add_node(1)
+nodes = graph.get_nodes()
 
-graph.add_edge(Node(1), Node(4))
-graph.add_edge(Node(4), Node(1))
-graph.add_edge(Node(4), Node(2))
-graph.add_edge(Node(2), Node(4))
-graph.add_edge(Node(3), Node(2))
-# graph.bfs()
-add branch
+graph.add_edge(Vertex(1), Vertex(4))
+graph.add_edge(Vertex(4), Vertex(1))
+graph.add_edge(Vertex(4), Vertex(2))
+graph.add_edge(Vertex(2), Vertex(4))
+graph.add_edge(Vertex(1), Vertex(2))
+
+neighbors = graph.get_neighbors(Vertex(1))
+
+size = graph.size()
+print(size)
+
+
+# def get_neighbors(self, Vertices):
+#     output = []
+#     for x in self.adjasent_list[Vertices]:
+#         output.append(x)
+#     return output
+
+# def bfs(self, start_Vertices):
+#     Verticess = []
+#     visited = set()
+#     breadth = Queue()
+#     breadth.enqueue(start_Vertices)
+
+#     visited.add(start_Vertices)
+#     while breadth.length() > 0:
+#         Vertices = breadth.dequeue()
+#         print(Vertices)
+#         Verticess.append(Vertices)
+#         print(self.adjasent_list[Vertices])
+#         for n in self.adjasent_list[Vertices]:
+#             if n not in visited:
+#                 breadth.enqueue(n)
+#                 visited.add(n)
+
+#     return Verticess
