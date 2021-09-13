@@ -45,10 +45,10 @@ class Graph:
             print(node)
             nodes.append(node)
             print(self.adjList[node])
-        for n in self.adjList[node]:
-            if n not in visited:
-                breadth.enqueue(n)
-                visited.add(n)
+            for n in self.adjList[node]:
+                if n not in visited:
+                    breadth.enqueue(n)
+                    visited.add(n)
 
         return nodes
 
