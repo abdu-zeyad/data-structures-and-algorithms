@@ -66,3 +66,4 @@ graph.add_edge(Node(4), Node(2))
 graph.add_edge(Node(2), Node(4))
 graph.add_edge(Node(3), Node(2))
 # graph.bfs()
+add branch
