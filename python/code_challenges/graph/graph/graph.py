@@ -1,3 +1,6 @@
+from python.code_challenges.stack_and_graph.stack_and_graph.stack_and_queue import Queue
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -10,7 +13,6 @@ class Graph:
     def add_node(self, value):
         node = Node(value)
         self.adjList[node.value] = []
-        print(self.adjList)
 
     def add_edge(self, start, end):
         if start.value not in self.adjList:
@@ -31,6 +33,25 @@ class Graph:
             output.append(x)
         return output
 
+    def bfs(self, start_node):
+        nodes = []
+        visited = set()
+        breadth = Queue()
+        breadth.enqueue(start_node)
+
+        visited.add(start_node)
+        while breadth.length() > 0:
+            node = breadth.dequeue()
+            print(node)
+            nodes.append(node)
+            print(self.adjList[node])
+        for n in self.adjList[node]:
+            if n not in visited:
+                breadth.enqueue(n)
+                visited.add(n)
+
+        return nodes
+
 
 graph = Graph()
 graph.add_node(5)
@@ -38,10 +59,10 @@ graph.add_node(4)
 graph.add_node(3)
 graph.add_node(2)
 graph.add_node(1)
+
 graph.add_edge(Node(1), Node(4))
 graph.add_edge(Node(4), Node(1))
 graph.add_edge(Node(4), Node(2))
 graph.add_edge(Node(2), Node(4))
 graph.add_edge(Node(3), Node(2))
-
-print(graph.get_neighbors(4))
+graph.bfs(1)
