@@ -54,15 +54,14 @@ class Queue:
             self.rear = node
 
     def dequeue(self):
+
         try:
-            self.front.value
+            removed = self.front
+            self.front = self.front.next
+            self.size -= 1
+            return removed.value
         except:
-            return "This is Empty queue"
-        else:
-            temp = self.front
-            self.front = temp.next
-            temp.next = None
-            return temp.value
+            return "The Queue is empty"
 
     def peek(self):
         try:
@@ -76,6 +75,19 @@ class Queue:
         else:
             return False
 
+    def length(self):
+        length = 0
+        while self.front:
+            length += 1
+            self.front = self.front.next
+
+        return length
+
 
 # if __name__=="__main__" :
 #     pass
+# q = Queue()
+# q.enqueue(4)
+# q.enqueue(4)
+
+# print(q.dequeue())
