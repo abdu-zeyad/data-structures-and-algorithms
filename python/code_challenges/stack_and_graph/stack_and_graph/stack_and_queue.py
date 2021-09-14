@@ -43,23 +43,26 @@ class Queue:
     def __init__(self):
         self.front = None
         self.rear = None
+        self.size = 0
 
     def enqueue(self, value):
         node = Node(value)
         if self.front == None:
             self.front = node
             self.rear = node
+            self.size += 1
         else:
             self.rear.next = node
+
             self.rear = node
+            self.size += 1
 
     def dequeue(self):
-
         try:
-            removed = self.front
+            removed = self.front.value
             self.front = self.front.next
             self.size -= 1
-            return removed.value
+            return removed
         except:
             return "The Queue is empty"
 
@@ -75,19 +78,18 @@ class Queue:
         else:
             return False
 
-    def length(self):
-        length = 0
-        while self.front:
-            length += 1
-            self.front = self.front.next
 
-        return length
+if __name__ == "__main__":
+    pass
+    # q = Queue()
+    # q.enqueue(1)
 
-
-# if __name__=="__main__" :
-#     pass
-# q = Queue()
-# q.enqueue(4)
-# q.enqueue(4)
-
-# print(q.dequeue())
+    # print(q.length())
+    # print(q.dequeue())
+    # q.enqueue(3)
+    # q.enqueue(4)
+    # q.enqueue(5)
+    # q.enqueue(6)
+    # print(q.front.value)
+    # print(q.front.next.value)
+    # print(q.rear.value)
