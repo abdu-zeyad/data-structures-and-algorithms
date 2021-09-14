@@ -40,3 +40,21 @@ def test_get_neighbors():
     actual = graph.get_neighbors(Vertex(4))
     excepted = [1, 2]
     assert actual == excepted
+
+
+def test_bds():
+    graph = Graph()
+    graph.add_node(5)
+    graph.add_node(4)
+    graph.add_node(3)
+    graph.add_node(2)
+    graph.add_node(1)
+    graph.add_edge(Vertex(1), Vertex(4))
+    graph.add_edge(Vertex(3), Vertex(5))
+    graph.add_edge(Vertex(5), Vertex(2))
+    graph.add_edge(Vertex(2), Vertex(3))
+    graph.add_edge(Vertex(1), Vertex(2))
+
+    actual = graph.bfs(1)
+    excepted = [1, 4, 2, 3, 5]
+    assert actual == excepted
