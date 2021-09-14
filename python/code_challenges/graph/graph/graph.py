@@ -67,7 +67,7 @@ if __name__ == "__main__":
     graph.add_edge(Vertex(2), Vertex(3))
     graph.add_edge(Vertex(1), Vertex(2))
 
-
+new branch
 #  start with the beggining node which is the origin
 # then it is connected to the neighbores if the neighbores is the destinaion it is solver
 #  if it is not then visit neighbores's neighbores in a while loop
