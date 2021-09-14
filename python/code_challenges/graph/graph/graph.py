@@ -51,6 +51,18 @@ class Graph:
                     queue.enqueue(neighbor)
         return nodes
 
+    def business_trip(self, cities):
+
+        some_cities = self.get_neighbors(cities[0])
+        cost = 0
+        for city in some_cities:
+            if city.start_vertex.value in cities[1 : len(cities)]:
+                cost = cost + city.weight
+        if cost == 0:
+            return [False, 0]
+
+        return [True, cost]
+
     def dfs(self, start):
         nodes = []
         visited = set()
