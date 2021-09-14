@@ -52,43 +52,20 @@ class Graph:
         return nodes
 
 
-graph = Graph()
-graph.add_node(5)
-graph.add_node(4)
-graph.add_node(3)
-graph.add_node(2)
-graph.add_node(1)
-nodes = graph.get_nodes()
+if __name__ == "__main__":
 
-graph.add_edge(Vertex(1), Vertex(4))
-graph.add_edge(Vertex(3), Vertex(5))
-graph.add_edge(Vertex(5), Vertex(2))
-graph.add_edge(Vertex(2), Vertex(3))
-graph.add_edge(Vertex(1), Vertex(2))
+    graph = Graph()
+    graph.add_node(5)
+    graph.add_node(4)
+    graph.add_node(3)
+    graph.add_node(2)
+    graph.add_node(1)
 
-neighbors = graph.get_neighbors(Vertex(1))
-
-size = graph.size()
-
-print(graph.bfs(1))
-# def bfs(self, start_Vertices):
-#     Verticess = []
-#     visited = set()
-#     breadth = Queue()
-#     breadth.enqueue(start_Vertices)
-
-#     visited.add(start_Vertices)
-#     while breadth.length() > 0:
-#         Vertices = breadth.dequeue()
-#         print(Vertices)
-#         Verticess.append(Vertices)
-#         print(self.adjasent_list[Vertices])
-#         for n in self.adjasent_list[Vertices]:
-#             if n not in visited:
-#                 breadth.enqueue(n)
-#                 visited.add(n)
-
-#     return Verticess
+    graph.add_edge(Vertex(1), Vertex(4))
+    graph.add_edge(Vertex(3), Vertex(5))
+    graph.add_edge(Vertex(5), Vertex(2))
+    graph.add_edge(Vertex(2), Vertex(3))
+    graph.add_edge(Vertex(1), Vertex(2))
 
 
 #  start with the beggining node which is the origin
