@@ -1,4 +1,4 @@
-from python.code_challenges.graph.graph.graph import Graph, Node
+from python.code_challenges.graph.graph.graph import Graph, Vertex
 
 
 def test_size():
@@ -32,11 +32,29 @@ def test_get_neighbors():
     graph.add_node(3)
     graph.add_node(2)
     graph.add_node(1)
-    graph.add_edge(Node(1), Node(4))
-    graph.add_edge(Node(4), Node(1))
-    graph.add_edge(Node(4), Node(2))
-    graph.add_edge(Node(2), Node(4))
-    graph.add_edge(Node(3), Node(2))
-    actual = graph.get_neighbors(4)
-    excepted = [{1}, {2}]
+    graph.add_edge(Vertex(1), Vertex(4))
+    graph.add_edge(Vertex(4), Vertex(1))
+    graph.add_edge(Vertex(4), Vertex(2))
+    graph.add_edge(Vertex(2), Vertex(4))
+    graph.add_edge(Vertex(3), Vertex(2))
+    actual = graph.get_neighbors(Vertex(4))
+    excepted = [1, 2]
+    assert actual == excepted
+
+
+def test_bds():
+    graph = Graph()
+    graph.add_node(5)
+    graph.add_node(4)
+    graph.add_node(3)
+    graph.add_node(2)
+    graph.add_node(1)
+    graph.add_edge(Vertex(1), Vertex(4))
+    graph.add_edge(Vertex(3), Vertex(5))
+    graph.add_edge(Vertex(5), Vertex(2))
+    graph.add_edge(Vertex(2), Vertex(3))
+    graph.add_edge(Vertex(1), Vertex(2))
+
+    actual = graph.bfs(1)
+    excepted = [1, 4, 2, 3, 5]
     assert actual == excepted
