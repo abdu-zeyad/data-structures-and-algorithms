@@ -51,6 +51,21 @@ class Graph:
                     queue.enqueue(neighbor)
         return nodes
 
+    def dfs(self, start):
+        nodes = []
+        visited = set()
+        visited.add(start)
+        neighbors = self.adjacent_list[start]
+        for i in neighbors:
+            if i == 3:
+                print(i)
+                return
+            if not (i in visited):
+                self.dfs(i)
+                nodes.append(i)
+
+        return nodes
+
 
 if __name__ == "__main__":
 
@@ -66,8 +81,7 @@ if __name__ == "__main__":
     graph.add_edge(Vertex(5), Vertex(2))
     graph.add_edge(Vertex(2), Vertex(3))
     graph.add_edge(Vertex(1), Vertex(2))
-
-new branch
+    print(graph.dfs(1))
 #  start with the beggining node which is the origin
 # then it is connected to the neighbores if the neighbores is the destinaion it is solver
 #  if it is not then visit neighbores's neighbores in a while loop
